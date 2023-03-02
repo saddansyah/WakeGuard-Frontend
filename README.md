@@ -1,4 +1,8 @@
-# 🚗 WakeGuard
+<h1 align="center">
+  🚗 WakeGuard
+</h1>
+
+## ❓ About 
 WakeGuard adalah aplikasi untuk deteksi kantuk pada pengemudi dengan tujuan meminimalkan risiko kecelakaan karena microsleep
 
 ## Kelompok Pancasila 
