@@ -1,6 +1,0 @@
-#theme: hacker
-remote_theme: benbalter/retlab
-plugins:
-- jekyll-remote-theme # add this line to the plugins list if you already have one
-title : WakeGuard
-description : WakeGuard adalah aplikasi untuk deteksi kantuk pada pengemudi dengan tujuan meminimalkan risiko kecelakaan karena microsleep
