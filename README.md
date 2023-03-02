@@ -4,4 +4,4 @@ WakeGuard adalah aplikasi untuk deteksi kantuk pada pengemudi dengan tujuan memi
 ## Kelompok Pancasila 
 - Ketua Kelompok:
 - Anggota 1: Saddan Syah Akbar - 20/460566/TK/51155
-- Anggota 2: 
+- Anggota 2: Agnes Suarna - 463589/TK/51581
