@@ -38,7 +38,7 @@ Kebutuhan pengguna :
 - [Lo-Fi Wireframing](https://www.figma.com/file/aV7ggJ6RH2coW8szDVTk1L/WakeGuard---Wireframe?node-id=0%3A1&t=a3xpXmo7uHITH5mQ-1 )
 - [Hi-Fi Wireframing](https://www.figma.com/file/aV7ggJ6RH2coW8szDVTk1L/WakeGuard---Wireframe?node-id=20%3A92&t=a3xpXmo7uHITH5mQ-0)
 
-## 📅 Gantt Chart
+## 📅 Gantt Diagram
 ![image](https://user-images.githubusercontent.com/73093118/223041081-87b0bc50-4b6b-4b87-8299-b69b718360f8.png)
 
 ## 🔁 Software Development Life Cycle
@@ -50,7 +50,7 @@ Agile: Kanban
 - Efisiensi waktu proses pengembangan
 - Terpetakan secara visual sehingga mudah dipahami
 
-## 👨‍💻 Kelompok Pancasila 
+## 👨‍💻 Kelompok Pancasila
 - Christina Angraeni Panellah - 20/456840/TK/50664 **(Ketua Kelompok)**
 - Saddan Syah Akbar - 20/460566/TK/51155
 - Agnes Suarna - 463589/TK/51581
