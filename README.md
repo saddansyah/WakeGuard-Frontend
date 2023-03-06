@@ -39,21 +39,7 @@ Kebutuhan pengguna :
 - [Hi-Fi Wireframing](https://www.figma.com/file/aV7ggJ6RH2coW8szDVTk1L/WakeGuard---Wireframe?node-id=20%3A92&t=a3xpXmo7uHITH5mQ-0)
 
 ## 📅 Gantt Chart
-``` mermaid
-gantt
-    title WakeGuard Gantt Diagram
-    dateFormat  DD-MM
-    todayMarker
-    
-    section Subprojects
-    Brainstorming : a1, 02-03 , 2w
-    Requirement Analysis : 09-03, 3w
-    Design : 16-03, 3w
-    Developing : 23-03, 9w
-    Testing : 04-05, 3w
-    Deployment : 11-05, 2w
-    Maintenance : 11-05, 2w
-```
+![image](https://user-images.githubusercontent.com/73093118/223041081-87b0bc50-4b6b-4b87-8299-b69b718360f8.png)
 
 ## 🔁 Software Development Life Cycle
 ### Method
