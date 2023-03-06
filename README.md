@@ -39,8 +39,21 @@ Kebutuhan pengguna :
 - [Hi-Fi Wireframing](https://www.figma.com/file/aV7ggJ6RH2coW8szDVTk1L/WakeGuard---Wireframe?node-id=20%3A92&t=a3xpXmo7uHITH5mQ-0)
 
 ## 📅 Gantt Chart
-![image](https://user-images.githubusercontent.com/73093118/223001686-501e1615-e097-4878-b8f0-752df0dec3c1.png)
-
+``` mermaid
+gantt
+    title WakeGuard Gantt Diagram
+    dateFormat  DD-MM
+    todayMarker
+    
+    section Subprojects
+    Brainstorming : a1, 02-03 , 2w
+    Requirement Analysis : 09-03, 3w
+    Design : 16-03, 3w
+    Developing : 23-03, 9w
+    Testing : 04-05, 3w
+    Deployment : 11-05, 2w
+    Maintenance : 11-05, 2w
+```
 
 ## 🔁 Software Development Life Cycle
 ### Method
@@ -52,6 +65,7 @@ Agile: Kanban
 - Terpetakan secara visual sehingga mudah dipahami
 
 ## 👨‍💻 Kelompok Pancasila 
-- Ketua Kelompok: Christina Angraeni Panellah - 20/456840/TK/50664
-- Anggota 1: Saddan Syah Akbar - 20/460566/TK/51155
-- Anggota 2: Agnes Suarna - 463589/TK/51581
+- Christina Angraeni Panellah - 20/456840/TK/50664 **(Ketua Kelompok)**
+- Saddan Syah Akbar - 20/460566/TK/51155
+- Agnes Suarna - 463589/TK/51581
+
