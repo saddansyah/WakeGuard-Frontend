@@ -50,6 +50,13 @@ Agile: Kanban
 - Efisiensi waktu proses pengembangan
 - Terpetakan secara visual sehingga mudah dipahami
 
+## Commit Naming Convention
+- `feat` is for adding a new feature
+- `fix` is for fixing a bug
+- `refactor` is for changing code for peformance or convenience purpose (e.g. readibility)
+- `chore` is for everything else (writing documentation, formatting, adding tests, cleaning useless code etc.)
+After the category, there should be a ":" announcing the commit description.
+
 ## 👨‍💻 Kelompok Pancasila
 - Christina Angraeni Panellah - 20/456840/TK/50664 **(Ketua Kelompok)**
 - Saddan Syah Akbar - 20/460566/TK/51155
