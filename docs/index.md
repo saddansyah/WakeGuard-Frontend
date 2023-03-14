@@ -129,8 +129,9 @@ Kebutuhan pengguna :
 | FR4  | Pengemudi diberikan akses komunikasi yang cepat, jika sewaktu-waktu kecelakaan terjadi. Seperti nomor-nomor penting, termasuk Polisi, Ambulans, dan lainnya sebagai pertolongan pertama.  |
 
 ## Wireframing
-- [Lo-Fi Wireframing](https://www.figma.com/file/aV7ggJ6RH2coW8szDVTk1L/WakeGuard---Wireframe?node-id=0%3A1&t=a3xpXmo7uHITH5mQ-1 )
-- [Hi-Fi Wireframing](https://www.figma.com/file/aV7ggJ6RH2coW8szDVTk1L/WakeGuard---Wireframe?node-id=20%3A92&t=a3xpXmo7uHITH5mQ-0)
+- [Lo-Fi Wireframing](https://www.figma.com/file/aV7ggJ6RH2coW8szDVTk1L/WakeGuard---Wireframe?node-id=20%3A92&t=a3xpXmo7uHITH5mQ-0)
+- [Hi-Fi Wireframing](https://www.figma.com/file/aV7ggJ6RH2coW8szDVTk1L/WakeGuard---Wireframe?node-id=0%3A1&t=a3xpXmo7uHITH5mQ-1 )
+
 
 ## Gantt Diagram
 ![image](https://user-images.githubusercontent.com/73093118/223041081-87b0bc50-4b6b-4b87-8299-b69b718360f8.png)
