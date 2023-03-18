@@ -5,6 +5,9 @@
 ## ❓ Tentang 
 WakeGuard adalah aplikasi untuk deteksi kantuk pada pengemudi dengan tujuan meminimalkan risiko kecelakaan karena microsleep
 
+## 🔙 Backend Repository
+[Backend Repository](https://github.com/saddansyah/WakeGuard-Backend)
+
 ## ⌨ Commit Naming Convention
 - `feat` is for adding a new feature
 - `fix` is for fixing a bug
