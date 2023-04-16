@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 
 import { App, NotFound } from '@/utils/pagesLoader';
+import { SkeletonLoading } from '@/utils/componentsLoader';
 import './index.css'
 
 // check serviceWorker
@@ -27,6 +28,6 @@ const router = createBrowserRouter(createRoutesFromElements(
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <RouterProvider router={router} fallbackElement={<SkeletonLoading/>} />
   </React.StrictMode>,
 )

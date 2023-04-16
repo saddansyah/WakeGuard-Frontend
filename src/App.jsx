@@ -1,3 +1,5 @@
+import { SkeletonLoading } from '@/utils/componentsLoader';
+
 function App() {
 
   return (
