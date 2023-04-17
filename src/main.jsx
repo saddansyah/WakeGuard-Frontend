@@ -4,30 +4,26 @@ import {
   createBrowserRouter,
   RouterProvider,
   createRoutesFromElements,
-  Route
+  Route,
+  Navigate
 } from "react-router-dom";
 
-import { App, NotFound } from '@/utils/pagesLoader';
+// User-defined module import
+import { router } from './router';
+import '@/utils/pagesLoader'; // need to be explicitly imported
 import { SkeletonLoading } from '@/utils/componentsLoader';
 import './index.css'
 
-// check serviceWorker
+// Service Workers
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/serviceWorker.js') // async
     .then((reg) => console.log('serviceWorker is registered'))
     .catch((err) => console.error(err))
 }
 
-// router
-const router = createBrowserRouter(createRoutesFromElements(
-  <Route path='/'>
-    <Route path='/' element={<App/>}/>
-    <Route path='*' element={<NotFound/>}/>
-  </Route>
-))
-
+// Init
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} fallbackElement={<SkeletonLoading/>} />
+    <RouterProvider router={router} fallbackElement={<SkeletonLoading />} />
   </React.StrictMode>,
 )
