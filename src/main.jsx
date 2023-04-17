@@ -12,6 +12,7 @@ import {
 import { router } from './router';
 import '@/utils/pagesLoader'; // need to be explicitly imported
 import { SkeletonLoading } from '@/utils/componentsLoader';
+
 import './index.css'
 
 // Service Workers
