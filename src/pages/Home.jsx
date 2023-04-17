@@ -1,9 +1,19 @@
+import Menu from "@mui/icons-material/Menu";
+import { Avatar } from "@mui/material";
+import { Navbar } from "@/utils/componentsLoader";
+
 const Home = () => {
-    return ( 
+    const user = "WakeGuard";
+
+    return (
         <>
-            <h1>Home</h1>
+            <Navbar>
+                <Avatar>SA</Avatar>
+                <Menu />
+            </Navbar>
+            <h1 className="font-bold text-2xl text-primary mb-6">Hello, {user}</h1>
         </>
-     );
+    );
 }
- 
+
 export default Home;
