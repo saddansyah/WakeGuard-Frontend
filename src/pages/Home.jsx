@@ -8,7 +8,7 @@ const Home = () => {
     return (
         <>
             <Navbar>
-                <Avatar>SA</Avatar>
+                <Avatar>WG</Avatar>
                 <Menu />
             </Navbar>
             <h1 className="font-bold text-2xl text-primary mb-6">Hello, {user}</h1>

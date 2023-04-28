@@ -5,8 +5,10 @@ function App() {
 
   return (
     <div className="App">
-      <Outlet/>
-      <BottomNavbar/>
+      <div className="container p-6 mx-auto">
+        <Outlet />
+      </div>
+      <BottomNavbar />
     </div>
   )
 }
