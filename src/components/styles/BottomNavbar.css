@@ -1,0 +1,7 @@
+.active-driving-mode {
+    @apply text-white transition-all w-full
+}
+
+.active-driving-mode div {
+    @apply bg-accent animate-pulse
+}
