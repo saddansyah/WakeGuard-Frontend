@@ -7,7 +7,7 @@
   line-height: 1.5;
   font-weight: 400;
 
-  background-color: #222;
+  background-color: #fff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -16,6 +16,8 @@
   -webkit-text-size-adjust: 100%;
 }
 
-
-
-
+@layer components {
+  .card {
+    @apply bg-white shadow-md rounded-lg p-4;
+  }
+}

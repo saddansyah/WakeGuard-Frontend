@@ -4,7 +4,7 @@ const BaseLayout = () => {
     return (
         <>
             <div className="flex justify-center">
-                <div className="bg-white h-screen w-screen text-black">
+                <div className="bg-white mb-12 w-screen text-black">
                     <Outlet />
                 </div>
             </div>

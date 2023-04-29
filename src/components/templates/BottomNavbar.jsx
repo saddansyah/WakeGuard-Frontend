@@ -27,7 +27,7 @@ const BottomNavbar = () => {
 
     return (
         <>
-            <div className="fixed bottom-0 left-0 right z-50 w-full h-16 shadow-[0_-35px_60px_-5px_rgba(0,0,0,0.1)] rounded-t-md">
+            <div className="bg-white fixed bottom-0 left-0 right z-50 w-full h-16 shadow-[0_-35px_60px_-5px_rgba(0,0,0,0.1)] rounded-t-md">
                 <ul className="grid container gap-2 justify-items-stretch h-full grid-cols-5 mx-auto font-medium text-xs">
                     <ButtonBase component="li">
                         <NavLink to="/" exact="true" className={({ isActive }) => isActive ? 'text-accent  transition-all' : 'text-gray-700  transition-all'}>
@@ -47,7 +47,7 @@ const BottomNavbar = () => {
                     </ButtonBase>
                     <ButtonBase component="div">
                         <div className='relative bottom-2 flex flex-col gap-1 items-center justify-center h-full font-light'>
-                            <NavLink to="/driving-mode" exact="true" className={({ isActive }) => isActive ? 'active-driving-mode' : 'text-gray-700  transition-all w-full'}>
+                            <NavLink to="/driving-mode" exact="true" className={({ isActive }) => isActive ? 'active-driving-mode' : 'text-white transition-all w-full'}>
                                 <div className='bg-secondary p-2 scale-150 bottom-2 relative rounded-full'>
                                     <DirectionsCarIcon />
                                 </div>
