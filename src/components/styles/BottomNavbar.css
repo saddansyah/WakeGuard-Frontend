@@ -1,5 +1,5 @@
 .active-driving-mode {
-    @apply text-white transition-all w-full
+    @apply text-white transition-all
 }
 
 .active-driving-mode div {
