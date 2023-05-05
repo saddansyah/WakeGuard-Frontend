@@ -40,7 +40,7 @@
 
 @layer components {
   .card {
-    @apply bg-white shadow-md rounded-lg p-4;
+    @apply bg-white shadow-md rounded-lg p-4 border;
   }
 }
 
