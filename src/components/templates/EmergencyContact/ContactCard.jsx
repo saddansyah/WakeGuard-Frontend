@@ -8,7 +8,7 @@ const ContactCard = ({contact}) => {
         <div className={`contact card flex flex-row text-sm mb-3 ${contact.isPinned ? `bg-secondary text-white` : `bg-white`}`}>
             <div className="contact-info basis-4/5">
                 <h4 className={`inline font-bold ${contact.isPinned ? ` text-white` : `text-primary`}`}>{contact.name}</h4>
-                <span className="inline-block ml-1 text-yellow-300">{contact.isPinned ? <StarIcon/> : <StarBorderIcon/>}</span>
+                <span className="inline-block cursor-pointer ml-1 text-yellow-300">{contact.isPinned ? <StarIcon/> : <StarBorderIcon/>}</span>
                 <p className="">{contact.number}</p>
             </div>
             <div className="action basis-1/5 flex justify-center items-center">

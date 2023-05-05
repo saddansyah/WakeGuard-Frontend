@@ -16,8 +16,32 @@
   -webkit-text-size-adjust: 100%;
 }
 
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 12px;
+  background: #d1d5db;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #0ea5e9; 
+  border-radius: 10px;
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #0369a1; 
+}
+
 @layer components {
   .card {
-    @apply bg-white shadow-md rounded-lg p-4;
+    @apply bg-white shadow-md rounded-lg p-4 border;
   }
 }
+
+
