@@ -1,6 +1,6 @@
 import Menu from "@mui/icons-material/Menu";
 import { Avatar } from "@mui/material";
-import { Navbar } from "@/utils/componentsLoader";
+import { Navbar, SearchBar } from "@/utils/componentsLoader";
 
 import driver1 from "../assets/driver1.png";
 import driver2 from "../assets/driver2.jpg";
@@ -22,7 +22,7 @@ const DrivingTips = () => {
     <>
       <Navbar>
         <Avatar>WG</Avatar>
-        <Menu />
+        <SearchBar placeholder={'Search article..'}/>
       </Navbar>
       <h1 className="font-bold text-2xl text-primary mb-6">Driving Tips</h1>
 

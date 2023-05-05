@@ -2,7 +2,7 @@ import Menu from "@mui/icons-material/Menu";
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
 import { Avatar, Divider, Fab, Grow } from "@mui/material";
-import { Navbar, ContactCard } from "@/utils/componentsLoader";
+import { Navbar, ContactCard, SearchBar } from "@/utils/componentsLoader";
 
 const Emergency = () => {
 
@@ -28,10 +28,11 @@ const Emergency = () => {
         <>
             <Navbar>
                 <Avatar>WG</Avatar>
-                <Menu />
+                {/* <Menu /> */}
+                <SearchBar placeholder={'Search contact..'}/>
             </Navbar>
             <h1 className="font-bold text-2xl text-primary mb-6">Emergency</h1>
-            <div className="contacts h-[70vh] overflow-y-scroll">
+            <div className="contacts h-[70vh] overflow-y-auto">
                 <div className="one-tap-call">
                     <h2 className="font-bold mb-2">One-tap Call</h2>
                     <div className="cards grid grid-cols-1 gap-2">

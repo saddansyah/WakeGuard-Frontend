@@ -19,6 +19,8 @@ import {
     Profile
   } from '@/utils/pagesLoader';
 
+import DynamicTitle from "@/utils/dynamicTitle";
+
   const isLoggedIn = () => {
 
     // Auth logic...
@@ -29,12 +31,12 @@ import {
   const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/' element={<BaseLayout/>}>
       <Route exact path='/' element={isLoggedIn() ? <App/> : <Navigate to='auth/login' replace />}>
-        <Route path='/' element={<Home/>} />
-        <Route path='/driving-mode' element={<DrivingMode/>} />
-        <Route path='/emergency' element={<Emergency/>} />
-        <Route path='/driving-tips' element={<DrivingTips/>} />
-        <Route path='/profile' element={<Profile/>} />
-        <Route path='*' element={<NotFound/>} />
+        <Route path='/' element={<DynamicTitle title="Home"><Home/></DynamicTitle>} />
+        <Route path='/driving-mode' element={<DynamicTitle title="Driving Mode"><DrivingMode/></DynamicTitle>} />
+        <Route path='/emergency' element={<DynamicTitle title="Emergency"><Emergency/></DynamicTitle>} />
+        <Route path='/driving-tips' element={<DynamicTitle title="Driving Tips"><DrivingTips/></DynamicTitle>} />
+        <Route path='/profile' element={<DynamicTitle title="Profile"><Profile/></DynamicTitle>} />
+        <Route path='*' element={<DynamicTitle title="404 Not Found"><NotFound/></DynamicTitle>} />
       </Route>
       <Route exact path='auth' element={isLoggedIn() ? <Navigate to='/' replace/> : <Login/>}>
         <Route path='login' element={<Login/>} />
