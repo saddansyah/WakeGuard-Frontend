@@ -3,10 +3,8 @@ import { Outlet } from "react-router-dom";
 const BaseLayout = () => {
     return (
         <>
-            <div className="flex justify-center">
-                <div className="bg-white mb-12 w-screen text-black">
-                    <Outlet />
-                </div>
+            <div className="bg-white relative max-w-lg w-screen text-black mx-auto">
+                <Outlet />
             </div>
         </>
     );

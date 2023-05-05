@@ -7,23 +7,26 @@ import CallIcon from '@mui/icons-material/Call';
 import Avatar from "@mui/material/Avatar";
 
 // Component Loader
-import { Navbar } from "@/utils/componentsLoader";
+import { Navbar, ContactCard } from "@/utils/componentsLoader";
 import { Link } from "react-router-dom";
 
 const dummyContact = [
     {
         name: "Pak Pulici",
-        number: "08112394902"
+        number: "08112394902",
+        isPinned: true
     },
     {
         name: "Pak Pulizi",
-        number: "08112393124"
+        number: "08112393124",
+        isPinned: false
     },
     {
         name: "Pak Polici",
-        number: "08113394902"
+        number: "08113394902",
+        isPinned: false
     }
-]
+];
 
 const Home = () => {
     const user = "WakeGuard";
@@ -58,22 +61,12 @@ const Home = () => {
             <div className="one-tap-call mb-6">
                 <h2 className="font-bold mb-2">One-tap Call</h2>
                 <div className="cards grid grid-cols-1 gap-2">
-                    {dummyContact && dummyContact.map((item) =>
-                        <div key={item.number} className="contact card flex flex-row text-sm">
-                            <div className="contact-info basis-4/5">
-                                <h4 className="font-semibold text-primary">{item.name}</h4>
-                                <p className="">{item.number}</p>
-                            </div>
-                            <div className="action basis-1/5 flex justify-center items-center">
-                                <div className='bg-secondary text-white w-fit p-2 rounded-full sca'>
-                                    <CallIcon />
-                                </div>
-                            </div>
-                        </div>
+                    {dummyContact && dummyContact.map((contact) =>
+                        contact.isPinned && <ContactCard key={contact.number} contact={contact}/>
                     )}
                 </div>
             </div>
-
+            
             <div className="recent-tips mb-6">
                 <h2 className="font-bold mb-2">Recent Driving Tips</h2>
                 <div className="card bg-yellow-400 text-center">

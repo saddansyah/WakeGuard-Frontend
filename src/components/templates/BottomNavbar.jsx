@@ -27,10 +27,10 @@ const BottomNavbar = () => {
 
     return (
         <>
-            <div className="bg-white fixed bottom-0 left-0 right z-50 w-full h-16 shadow-[0_-35px_60px_-5px_rgba(0,0,0,0.1)] rounded-t-md">
-                <ul className="grid container gap-2 justify-items-stretch h-full grid-cols-5 mx-auto font-medium text-xs">
+            <div className="bg-white absolute bottom-0 left-0 right-0 z-10 w-full h-16 shadow-[0_-35px_60px_-5px_rgba(0,0,0,0.1)] rounded-t-md">
+                <ul className="grid gap-2 justify-items-stretch h-full grid-cols-5 mx-auto font-medium text-xs">
                     <ButtonBase component="li">
-                        <NavLink to="/" exact="true" className={({ isActive }) => isActive ? 'text-accent  transition-all' : 'text-gray-700  transition-all'}>
+                        <NavLink to="/" exact="true" className={({ isActive }) => isActive ? 'text-accent  transition-all w-full' : 'text-gray-700  transition-all w-full'}>
                             <div className='flex flex-col font-light items-center justify-center h-full'>
                                 <HomeIcon />
                                 <p className=''>Home</p>
@@ -38,26 +38,23 @@ const BottomNavbar = () => {
                         </NavLink>
                     </ButtonBase>
                     <ButtonBase component="li">
-                        <NavLink to="/emergency" exact="true" className={({ isActive }) => isActive ? 'text-accent  transition-all' : 'text-gray-700  transition-all'}>
+                        <NavLink to="/emergency" exact="true" className={({ isActive }) => isActive ? 'text-accent  transition-all w-full' : 'text-gray-700  transition-all w-full'}>
                             <div className='flex flex-col font-light items-center justify-center h-full'>
                                 <ContactEmergencyIcon />
                                 <p className=''>Emergency</p>
                             </div>
                         </NavLink>
                     </ButtonBase>
-                    <ButtonBase component="div">
-                        <div className='relative bottom-2 flex flex-col gap-1 items-center justify-center h-full font-light'>
-                            <NavLink to="/driving-mode" exact="true" className={({ isActive }) => isActive ? 'active-driving-mode' : 'text-white transition-all w-full'}>
-                                <div className='bg-secondary p-2 scale-150 bottom-2 relative rounded-full'>
-                                    <DirectionsCarIcon />
-                                </div>
-
-                            </NavLink>
-                            <p className='text-gray-700'>Mode</p>
-                        </div>
-                    </ButtonBase>
+                    <div className='relative bottom-2 flex flex-col gap-1 items-center justify-center h-full font-light'>
+                        <NavLink to="/driving-mode" exact="true" className={({ isActive }) => isActive ? 'active-driving-mode' : 'text-white transition-all'}>
+                            <div className='bg-secondary p-2 scale-150 bottom-2 relative rounded-full'>
+                                <DirectionsCarIcon />
+                            </div>
+                        </NavLink>
+                        <p className='text-gray-700'>Mode</p>
+                    </div>
                     <ButtonBase component="li">
-                        <NavLink to="/driving-tips" exact="true" className={({ isActive }) => isActive ? 'text-accent  transition-all' : 'text-gray-700  transition-all'}>
+                        <NavLink to="/driving-tips" exact="true" className={({ isActive }) => isActive ? 'text-accent  transition-all w-full' : 'text-gray-700  transition-all w-full'}>
                             <div className=' flex flex-col font-light items-center justify-center h-full'>
                                 <InfoIcon />
                                 <p className=''>Tips</p>
@@ -65,7 +62,7 @@ const BottomNavbar = () => {
                         </NavLink>
                     </ButtonBase>
                     <ButtonBase component="li">
-                        <NavLink to="/profile" exact="true" className={({ isActive }) => isActive ? 'text-accent  transition-all' : 'text-gray-700  transition-all'}>
+                        <NavLink to="/profile" exact="true" className={({ isActive }) => isActive ? 'text-accent  transition-all w-full' : 'text-gray-700  transition-all w-full'}>
                             <div className=' flex flex-col font-light items-center justify-center h-full'>
                                 <AccountCircleIcon />
                                 <p className=''>Profile</p>
