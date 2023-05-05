@@ -6,9 +6,8 @@ import ContactEmergencyIcon from '@mui/icons-material/ContactEmergency';
 import InfoIcon from '@mui/icons-material/Info';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
+
 // MUI Components
-import BottomNavigation from '@mui/material/BottomNavigation';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import ButtonBase from '@mui/material/ButtonBase';
 
 // React
@@ -47,11 +46,13 @@ const BottomNavbar = () => {
                         </NavLink>
                     </ButtonBase>
                     <div className='relative bottom-2 flex flex-col gap-1 items-center justify-center h-full font-light'>
-                        <NavLink to="/driving-mode" exact="true" className={({ isActive }) => isActive ? 'active-driving-mode' : 'text-white transition-all'}>
-                            <div className='bg-secondary p-2 scale-150 bottom-2 relative rounded-full'>
-                                <DirectionsCarIcon />
-                            </div>
-                        </NavLink>
+                        <ButtonBase component="button" sx={{ borderRadius: 450}}>
+                            <NavLink to="/driving-mode" exact="true" className={({ isActive }) => isActive ? 'active-driving-mode' : 'text-white transition-all'}>
+                                <div className='bg-secondary p-2 scale-150 bottom-2 relative rounded-full'>
+                                    <DirectionsCarIcon />
+                                </div>
+                            </NavLink>
+                        </ButtonBase>
                         <p className='text-gray-700'>Mode</p>
                     </div>
                     <ButtonBase component="li">

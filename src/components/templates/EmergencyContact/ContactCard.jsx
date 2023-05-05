@@ -1,11 +1,14 @@
 import CallIcon from '@mui/icons-material/Call';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
+import StarIcon from '@mui/icons-material/Star';
 
 const ContactCard = ({contact}) => {
 
     return (
         <div className={`contact card flex flex-row text-sm mb-3 ${contact.isPinned ? `bg-secondary text-white` : `bg-white`}`}>
             <div className="contact-info basis-4/5">
-                <h4 className={`font-bold ${contact.isPinned ? ` text-white` : `text-primary`}`}>{contact.name}</h4>
+                <h4 className={`inline font-bold ${contact.isPinned ? ` text-white` : `text-primary`}`}>{contact.name}</h4>
+                <span className="inline-block ml-1 text-yellow-300">{contact.isPinned ? <StarIcon/> : <StarBorderIcon/>}</span>
                 <p className="">{contact.number}</p>
             </div>
             <div className="action basis-1/5 flex justify-center items-center">

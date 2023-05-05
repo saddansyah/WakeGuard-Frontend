@@ -1,8 +1,8 @@
 import Menu from "@mui/icons-material/Menu";
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
+
 import { Avatar, Divider, Fab, Grow } from "@mui/material";
 import { Navbar, ContactCard } from "@/utils/componentsLoader";
-
 
 const Emergency = () => {
 
@@ -31,20 +31,23 @@ const Emergency = () => {
                 <Menu />
             </Navbar>
             <h1 className="font-bold text-2xl text-primary mb-6">Emergency</h1>
-            <div className="one-tap-call mb-6">
-                <h2 className="font-bold mb-2">One-tap Call</h2>
-                <div className="cards grid grid-cols-1 gap-2">
-                    <div className="one-tap-call">
-                        {dummyContact && dummyContact
-                            ?.map((contact) => contact.isPinned && <ContactCard key={contact.number} contact={contact} />)
-                        }
+            <div className="contacts h-[70vh] overflow-y-scroll">
+                <div className="one-tap-call">
+                    <h2 className="font-bold mb-2">One-tap Call</h2>
+                    <div className="cards grid grid-cols-1 gap-2">
+                        <div className="one-tap-call">
+                            {dummyContact && dummyContact
+                                ?.map((contact) => contact.isPinned && <ContactCard key={contact.number} contact={contact} />)
+                            }
+                        </div>
                     </div>
-                    <Divider />
-                    <div className="contacts mt-3">
-                        {dummyContact && dummyContact
-                            ?.map((contact) => !contact.isPinned && <ContactCard key={contact.number} contact={contact} />)
-                        }
-                    </div>
+                </div>
+                <Divider />
+                <div className="contacts mt-3">
+                    <h2 className="font-bold mb-2">Contacts</h2>
+                    {dummyContact && dummyContact
+                        ?.map((contact) => !contact.isPinned && <ContactCard key={contact.number} contact={contact} />)
+                    }
                 </div>
             </div>
             <Grow in={true}>
