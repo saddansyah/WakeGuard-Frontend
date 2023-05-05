@@ -5,7 +5,7 @@ function App() {
 
   return (
     <div className="App h-screen">
-      <div className="p-6 mx-auto h-screen">
+      <div className="p-6 mx-auto">
         <Outlet />
       </div>
       <div className='mx-auto'>
