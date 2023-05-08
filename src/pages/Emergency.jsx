@@ -1,28 +1,17 @@
 import Menu from "@mui/icons-material/Menu";
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
-
 import { Avatar, Divider, Fab, Grow } from "@mui/material";
+
 import { Navbar, ContactCard, SearchBar } from "@/utils/componentsLoader";
+import useFetch from "@/hooks/useFetch";
+import { useContactContext } from "@/hooks/context/useContactContext";
 
 const Emergency = () => {
 
-    const dummyContact = [
-        {
-            name: "Pak Pulici",
-            number: "08112394902",
-            isPinned: true
-        },
-        {
-            name: "Pak Pulizi",
-            number: "08112393124",
-            isPinned: false
-        },
-        {
-            name: "Pak Polici",
-            number: "08113394902",
-            isPinned: false
-        }
-    ];
+    const url = import.meta.env.VITE_APP_DUMMY_URL + '/contacts';
+    const { contacts, dispatch } = useContactContext();
+  
+    useFetch({ url, dispatch, type: 'get_contacts' });
 
     return (
         <>
@@ -37,7 +26,7 @@ const Emergency = () => {
                     <h2 className="font-bold mb-2">One-tap Call</h2>
                     <div className="cards grid grid-cols-1 gap-2">
                         <div className="one-tap-call">
-                            {dummyContact && dummyContact
+                            {contacts && contacts
                                 ?.map((contact) => contact.isPinned && <ContactCard key={contact.number} contact={contact} />)
                             }
                         </div>
@@ -46,7 +35,7 @@ const Emergency = () => {
                 <Divider />
                 <div className="contacts mt-3">
                     <h2 className="font-bold mb-2">Contacts</h2>
-                    {dummyContact && dummyContact
+                    {contacts && contacts
                         ?.map((contact) => !contact.isPinned && <ContactCard key={contact.number} contact={contact} />)
                     }
                 </div>
