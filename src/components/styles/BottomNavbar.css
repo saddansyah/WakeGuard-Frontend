@@ -3,5 +3,5 @@
 }
 
 .active-driving-mode div {
-    @apply bg-accent animate-pulse
+    @apply animate-pulse
 }

@@ -8,7 +8,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 
 // MUI Components
-import ButtonBase from '@mui/material/ButtonBase';
+import { Fab, ButtonBase } from '@mui/material';
 
 // React
 import { useState } from 'react';
@@ -16,6 +16,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 
 // Styles
 import '@/components/styles/BottomNavbar.css'
+
 
 const BottomNavbar = () => {
     const [value, setValue] = useState('home');
@@ -27,7 +28,7 @@ const BottomNavbar = () => {
 
     return (
         <>
-            <div className="bg-white fixed bottom-0 left-0 right-0 z-10 w-full max-w-lg mx-auto h-16 shadow-[0_-35px_60px_-5px_rgba(0,0,0,0.1)] rounded-t-md">
+            <div className="bg-white fixed bottom-0 left-0 right-0 z-10 w-full max-w-lg mx-auto h-16 shadow-[0_-5px_10px_-5px_rgba(0,0,0,0.09)] rounded-t-md">
                 <ul className="grid gap-2 justify-items-stretch h-full grid-cols-5 mx-auto font-medium text-xs">
                     <ButtonBase component="li">
                         <NavLink to="/" exact="true" className={({ isActive }) => isActive ? 'text-accent  transition-all w-full' : 'text-gray-700  transition-all w-full'}>
@@ -45,21 +46,24 @@ const BottomNavbar = () => {
                             </div>
                         </NavLink>
                     </ButtonBase>
-                    <div className='relative bottom-2 flex flex-col gap-1 items-center justify-center h-full font-light'>
-                        <ButtonBase component="button" sx={{ borderRadius: 450}}>
+                    <div className='relative bottom-5 scale-[1.3] flex flex-col gap-1 items-center justify-center h-full font-light'>
+                        {/* <ButtonBase component="button" sx={{ borderRadius: 450}}>
+                            
+                        </ButtonBase>
+                        <p className='text-gray-700'>Mode</p> */}
+                        <Fab color='primary' size='large'>
                             <NavLink to="/driving-mode" exact="true" className={({ isActive }) => isActive ? 'active-driving-mode' : 'text-white transition-all'}>
-                                <div className='bg-secondary p-2 scale-150 bottom-2 relative rounded-full'>
+                                <div className='scale-150'>
                                     <DirectionsCarIcon />
                                 </div>
                             </NavLink>
-                        </ButtonBase>
-                        <p className='text-gray-700'>Mode</p>
+                        </Fab>
                     </div>
                     <ButtonBase component="li">
                         <NavLink to="/driving-tips" exact="true" className={({ isActive }) => isActive ? 'text-accent  transition-all w-full' : 'text-gray-700  transition-all w-full'}>
                             <div className=' flex flex-col font-light items-center justify-center h-full'>
                                 <InfoIcon />
-                                <p className=''>Tips</p>
+                                <p className=''>Driving Tips</p>
                             </div>
                         </NavLink>
                     </ButtonBase>

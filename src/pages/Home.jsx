@@ -9,27 +9,17 @@ import Avatar from "@mui/material/Avatar";
 // Component Loader
 import { Navbar, ContactCard } from "@/utils/componentsLoader";
 import { Link } from "react-router-dom";
+import useFetch from "@/hooks/useFetch";
+import { useContactContext } from "@/hooks/context/useContactContext";
 
-const dummyContact = [
-    {
-        name: "Pak Pulici",
-        number: "08112394902",
-        isPinned: true
-    },
-    {
-        name: "Pak Pulizi",
-        number: "08112393124",
-        isPinned: false
-    },
-    {
-        name: "Pak Polici",
-        number: "08113394902",
-        isPinned: false
-    }
-];
 
 const Home = () => {
     const user = "WakeGuard";
+    const url = import.meta.env.VITE_APP_DUMMY_URL + '/contacts';
+    const { contacts, dispatch } = useContactContext();
+  
+    useFetch({ url, dispatch, type: 'get_contacts' });
+
     return (
         <>
             <Navbar>
@@ -61,12 +51,12 @@ const Home = () => {
             <div className="one-tap-call mb-6">
                 <h2 className="font-bold mb-2">One-tap Call</h2>
                 <div className="cards grid grid-cols-1 gap-2">
-                    {dummyContact && dummyContact.map((contact) =>
-                        contact.isPinned && <ContactCard key={contact.number} contact={contact}/>
+                    {contacts && contacts.map((contact) =>
+                        contact.isPinned && <ContactCard key={contact.number} contact={contact} />
                     )}
                 </div>
             </div>
-            
+
             <div className="recent-tips mb-6">
                 <h2 className="font-bold mb-2">Recent Driving Tips</h2>
                 <div className="card bg-yellow-400 text-center">
