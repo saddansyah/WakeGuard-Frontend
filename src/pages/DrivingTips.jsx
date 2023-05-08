@@ -5,9 +5,6 @@ import { Navbar, SearchBar } from "@/utils/componentsLoader";
 import useFetch from "@/hooks/useFetch";
 import { useArticleContext } from "@/hooks/context/useArticleContext";
 
-// import img1 from "../assets/driver1.png";
-// import img2 from "../assets/driver2.jpg"
-
 const DrivingTips = () => {
 
   const url = import.meta.env.VITE_APP_DUMMY_URL + '/articles';
@@ -33,7 +30,7 @@ const DrivingTips = () => {
               >
                 <div className="image relative basis-2/3 ">
                   <img
-                    src={item.image}
+                    src={item.image_url}
                     alt="image here"
                     className="thumbnail mx-auto md:w-64 md:h-full rounded-xl"
                   />
