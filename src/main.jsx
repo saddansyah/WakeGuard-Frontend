@@ -21,15 +21,18 @@ if ('serviceWorker' in navigator) {
 // Context Provider
 import ArticleContextProvider from '@/contexts/ArticleContext';
 import ContactContextProvider from '@/contexts/ContactContext';
+import DisplayContextProvider from '@/contexts/DisplayContext';
 
 
 // Init
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ContactContextProvider>
-      <ArticleContextProvider>
-        <RouterProvider router={router} fallbackElement={<SkeletonLoading />} />
-      </ArticleContextProvider>
-    </ContactContextProvider>
+    <DisplayContextProvider>
+      <ContactContextProvider>
+        <ArticleContextProvider>
+          <RouterProvider router={router} fallbackElement={<SkeletonLoading />} />
+        </ArticleContextProvider>
+      </ContactContextProvider>
+    </DisplayContextProvider>
   </React.StrictMode>
 )
