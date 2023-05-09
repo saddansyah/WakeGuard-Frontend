@@ -2,23 +2,27 @@ import Menu from "@mui/icons-material/Menu";
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import { Avatar, Divider, Fab, Grow } from "@mui/material";
 
-import { Navbar, ContactCard, SearchBar } from "@/utils/componentsLoader";
+import { Navbar, ContactCard, SearchBar, ContactLoading, NoContactCard } from "@/utils/componentsLoader";
 import useFetch from "@/hooks/useFetch";
 import { useContactContext } from "@/hooks/context/useContactContext";
+import { useDisplayContext } from "@/hooks/context/useDisplayContext";
 
 const Emergency = () => {
 
     const url = import.meta.env.VITE_APP_DUMMY_URL + '/contacts';
     const { contacts, dispatch } = useContactContext();
-  
-    useFetch({ url, dispatch, type: 'get_contacts' });
+    const { isPending, message, setLoading, setMessage } = useDisplayContext();
+
+    useFetch({ url, dispatch, type: 'get_contacts', setLoading, setMessage });
+
+    console.log(contacts.length, isPending)
 
     return (
         <>
             <Navbar>
                 <Avatar>WG</Avatar>
                 {/* <Menu /> */}
-                <SearchBar placeholder={'Search contact..'}/>
+                <SearchBar placeholder={'Search contact..'} />
             </Navbar>
             <h1 className="font-bold text-2xl text-primary mb-6">Emergency</h1>
             <div className="contacts h-[70vh] overflow-y-auto">
@@ -26,18 +30,17 @@ const Emergency = () => {
                     <h2 className="font-bold mb-2">One-tap Call</h2>
                     <div className="cards grid grid-cols-1 gap-2">
                         <div className="one-tap-call">
-                            {contacts && contacts
-                                ?.map((contact) => contact.isPinned && <ContactCard key={contact.number} contact={contact} />)
-                            }
+                            {!contacts.length && (isPending ? <ContactLoading /> : <NoContactCard/>)}
+                            {contacts[0] && contacts?.map(contact => contact.isPinned && <ContactCard key={contact.number} contact={contact} />)}
                         </div>
+
                     </div>
                 </div>
                 <Divider />
                 <div className="contacts mt-3">
                     <h2 className="font-bold mb-2">Contacts</h2>
-                    {contacts && contacts
-                        ?.map((contact) => !contact.isPinned && <ContactCard key={contact.number} contact={contact} />)
-                    }
+                    {!contacts.length && (isPending ? <ContactLoading /> : <NoContactCard/>)}
+                    {contacts[0] && contacts?.map(contact => !contact.isPinned && <ContactCard key={contact.number} contact={contact} />)}
                 </div>
             </div>
             <Grow in={true}>

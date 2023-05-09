@@ -4,13 +4,16 @@ import { Avatar } from "@mui/material";
 import { Navbar, SearchBar } from "@/utils/componentsLoader";
 import useFetch from "@/hooks/useFetch";
 import { useArticleContext } from "@/hooks/context/useArticleContext";
+import { useDisplayContext } from "@/hooks/context/useDisplayContext";
 
 const DrivingTips = () => {
 
   const url = import.meta.env.VITE_APP_DUMMY_URL + '/articles';
   const { articles, dispatch } = useArticleContext();
+  const { isPending, message, setLoading, setMessage } = useDisplayContext();
 
-  useFetch({ url, dispatch, type: 'get_articles' });
+  useFetch({ url, dispatch, type: 'get_articles', setLoading, setMessage });
+
 
   return (
     <>

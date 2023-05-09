@@ -2,8 +2,7 @@ import { useEffect } from "react";
 import { useDisplayContext } from "@/hooks/context/useDisplayContext";
 
 
-const useFetch = ({ url, dispatch, type }) => {
-    const { isPending, message, setLoading, setMessage } = useDisplayContext();
+const useFetch = ({ url, dispatch, type, setLoading, setMessage }) => {
 
     useEffect(() => {
         (
