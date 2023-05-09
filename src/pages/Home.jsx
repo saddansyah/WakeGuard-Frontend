@@ -7,18 +7,20 @@ import CallIcon from '@mui/icons-material/Call';
 import Avatar from "@mui/material/Avatar";
 
 // Component Loader
-import { Navbar, ContactCard } from "@/utils/componentsLoader";
+import { Navbar, ContactCard, ContactLoading, NoContactCard } from "@/utils/componentsLoader";
 import { Link } from "react-router-dom";
 import useFetch from "@/hooks/useFetch";
 import { useContactContext } from "@/hooks/context/useContactContext";
+import { useDisplayContext } from "@/hooks/context/useDisplayContext";
 
 
 const Home = () => {
     const user = "WakeGuard";
     const url = import.meta.env.VITE_APP_DUMMY_URL + '/contacts';
     const { contacts, dispatch } = useContactContext();
-  
-    useFetch({ url, dispatch, type: 'get_contacts' });
+    const { isPending, message, setLoading, setMessage } = useDisplayContext();
+
+    useFetch({ url, dispatch, type: 'get_contacts', setLoading, setMessage });
 
     return (
         <>
@@ -51,9 +53,8 @@ const Home = () => {
             <div className="one-tap-call mb-6">
                 <h2 className="font-bold mb-2">One-tap Call</h2>
                 <div className="cards grid grid-cols-1 gap-2">
-                    {contacts && contacts.map((contact) =>
-                        contact.isPinned && <ContactCard key={contact.number} contact={contact} />
-                    )}
+                    {!contacts.length && (isPending ? <ContactLoading /> : <NoContactCard />)}
+                    {contacts[0] && contacts?.map(contact => contact.isPinned && <ContactCard key={contact.number} contact={contact} />)}
                 </div>
             </div>
 
