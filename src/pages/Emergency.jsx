@@ -15,8 +15,6 @@ const Emergency = () => {
 
     useFetch({ url, dispatch, type: 'get_contacts', setLoading, setMessage });
 
-    console.log(contacts.length, isPending)
-
     return (
         <>
             <Navbar>
