@@ -6,7 +6,7 @@ export const articleReducer = (state, action) => {
     switch (action.type) {
         case 'get_articles':
             return {
-                articles: action.payload
+                articles: action.payload.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // Sort by datetime
             }
         case 'added_article':
             return {

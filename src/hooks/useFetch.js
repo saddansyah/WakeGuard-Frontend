@@ -31,7 +31,7 @@ const useFetch = ({ url, dispatch, type, setLoading, setMessage }) => {
             }
         )();
 
-    }, []);
+    }, [dispatch]);
 }
 
 export default useFetch;
