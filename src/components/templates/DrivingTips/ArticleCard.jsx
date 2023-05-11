@@ -1,7 +1,7 @@
 const ArticleCard = ({ article }) => {
     return (<>
         <div
-            key={article.headline}
+            key={article.post_id}
             className="card flex flex-col text-sm sm:flex-row"
         >
             <div className="image relative basis-2/3 ">
@@ -13,8 +13,8 @@ const ArticleCard = ({ article }) => {
             </div>
             <div className="tips-info flex flex-col justify-between ">
                 <div className="middle mx-2">
-                    <h4 className="font-semibold text-black">{article.headline}</h4>
-                    <p className="">{article.teks}</p>
+                    <h4 className="font-semibold text-black">{article.title}</h4>
+                    <p className="">{article.body}</p>
                 </div>
             </div>
         </div>
