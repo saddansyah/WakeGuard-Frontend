@@ -8,6 +8,10 @@ export const articleReducer = (state, action) => {
             return {
                 articles: action.payload.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // Sort by datetime
             }
+        case 'get_article':
+            return {
+                articles: action.payload
+            }
         case 'added_article':
             return {
                 articles: [action.payload, ...state.article]

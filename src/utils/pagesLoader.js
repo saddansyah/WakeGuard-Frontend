@@ -13,6 +13,7 @@ import DrivingTips from "@/pages/DrivingTips";
 import Emergency from "@/pages/Emergency";
 import Profile from "@/pages/Profile";
 import NotFound from "@/pages/NotFound";
+import ArticleDetails from "@/pages/ArticleDetails";
 
 
 export {
@@ -25,5 +26,6 @@ export {
     DrivingMode,
     DrivingTips,
     Emergency,
-    Profile
+    Profile,
+    ArticleDetails
 }

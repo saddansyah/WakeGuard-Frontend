@@ -1,21 +1,32 @@
+import { Link } from "react-router-dom";
+import { ButtonBase, Chip } from "@mui/material";
+
 const ArticleCard = ({ article }) => {
     return (<>
         <div
-            key={article.post_id}
-            className="card flex flex-col text-sm sm:flex-row"
+            key={article.postId}
+            className="card block text-sm w-full"
         >
-            <div className="image relative basis-2/3 ">
+            <div className="image relative self-start mb-4">
                 <img
                     src={article.imageUrl}
                     alt="image here"
-                    className="thumbnail mx-auto md:w-64 md:h-full rounded-xl"
+                    className="thumbnail w-full rounded-lg"
                 />
             </div>
-            <div className="tips-info flex flex-col justify-between ">
-                <div className="middle mx-2">
-                    <h4 className="font-semibold text-black">{article.title}</h4>
-                    <p className="">{article.body}</p>
+            <div className="tips-info flex flex-col justify-between gap-4">
+                <div className="middle">
+                    <div className="chips">
+                        <div className="p-1.5 text-xs bg-gray-200 rounded-full w-fit inline-block mb-2">Category</div>
+                    </div>
+                    <h3 className="font-bold text-black text-xl mb-2">{article.title}</h3>
+                    <p className="text-gray-500">{article.excerpt}...</p>
                 </div>
+                <Link replace to={`/driving-tips/${article.id}`} className="w-fit">
+                    <ButtonBase component="div">
+                        <div className="cursor-pointer bg-accent text-white w-fit py-1.5 px-4 rounded-lg">Read More...</div>
+                    </ButtonBase>
+                </Link>
             </div>
         </div>
     </>);

@@ -1,12 +1,12 @@
 import Menu from "@mui/icons-material/Menu";
 import { Avatar } from "@mui/material";
+import { useState } from "react";
 
 import { Navbar, SearchBar, ArticleLoading, ArticleCard, NoArticleCard, SelectCategories } from "@/utils/componentsLoader";
 import useFetch from "@/hooks/useFetch";
 import { useArticleContext } from "@/hooks/context/useArticleContext";
 import { useDisplayContext } from "@/hooks/context/useDisplayContext";
 import useGetCategories from "@/hooks/useGetCategories";
-import { useState } from "react";
 
 const DrivingTips = () => {
 
