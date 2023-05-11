@@ -1,3 +1,4 @@
+import { useEffect, useMemo, useState } from "react";
 import Menu from "@mui/icons-material/Menu";
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import { Avatar, Divider, Fab, Grow } from "@mui/material";
@@ -15,11 +16,29 @@ const Emergency = () => {
 
     useFetch({ url, dispatch, type: 'get_contacts', setLoading, setMessage });
 
+    // Searching
+    const [searchText, setSearchText] = useState('')
+    const [filteredContacts, setFilteredContacts] = useState([]);
+    useEffect(() => setFilteredContacts(contacts), [contacts])
+
+    const filter = (value) => {
+        const filtered = contacts?.filter((item) =>
+            item.name.toLowerCase().includes(value.toLowerCase()) || item.number.toLowerCase().includes(value.toLowerCase()) 
+        );
+
+        filtered[0] ? setFilteredContacts(filtered) : setFilteredContacts([]);
+    }
+
     return (
         <>
             <Navbar>
                 <Avatar>WG</Avatar>
-                <SearchBar placeholder={'Search contact..'} />
+                <SearchBar
+                    placeholder={'Type name/number..'}
+                    searchText={searchText}
+                    setSearchText={setSearchText}
+                    filter={filter}
+                />
             </Navbar>
             <h1 className="font-bold text-2xl text-primary mb-6">Emergency</h1>
             <div className="contacts h-[70vh] overflow-y-auto">
@@ -27,8 +46,8 @@ const Emergency = () => {
                     <h2 className="font-bold mb-2">One-tap Call</h2>
                     <div className="cards grid grid-cols-1 gap-2">
                         <div className="one-tap-call">
-                            {!contacts.length && (isPending ? <ContactLoading /> : <NoContactCard/>)}
-                            {contacts[0] && contacts?.map(contact => contact.isPinned && <ContactCard key={contact.number} contact={contact} />)}
+                            {!filteredContacts.length && (isPending ? <ContactLoading /> : <NoContactCard />)}
+                            {filteredContacts[0] && filteredContacts?.map(contact => contact.isPinned && <ContactCard key={contact.number} contact={contact} />)}
                         </div>
 
                     </div>
@@ -36,8 +55,8 @@ const Emergency = () => {
                 <Divider />
                 <div className="contacts mt-3">
                     <h2 className="font-bold mb-2">Contacts</h2>
-                    {!contacts.length && (isPending ? <ContactLoading /> : <NoContactCard/>)}
-                    {contacts[0] && contacts?.map(contact => !contact.isPinned && <ContactCard key={contact.number} contact={contact} />)}
+                    {!filteredContacts.length && (isPending ? <ContactLoading /> : <NoContactCard />)}
+                    {filteredContacts[0] && filteredContacts?.map(contact => !contact.isPinned && <ContactCard key={contact.number} contact={contact} />)}
                 </div>
             </div>
             <Grow in={true}>

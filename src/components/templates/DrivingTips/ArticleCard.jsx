@@ -2,8 +2,6 @@ import { Link } from "react-router-dom";
 import { ButtonBase, Chip } from "@mui/material";
 
 const ArticleCard = ({ article }) => {
-    const categories = article?.category?.map(item => item.categoryName);
-
     return (<>
         <div
             key={article.postId}
