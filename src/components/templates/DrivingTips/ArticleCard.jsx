@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { ButtonBase, Chip } from "@mui/material";
 
 const ArticleCard = ({ article }) => {
+    const categories = article?.category?.map(item => item.categoryName);
+
     return (<>
         <div
             key={article.postId}
@@ -16,8 +18,8 @@ const ArticleCard = ({ article }) => {
             </div>
             <div className="tips-info flex flex-col justify-between gap-4">
                 <div className="middle">
-                    <div className="chips">
-                        <div className="p-1.5 text-xs bg-gray-200 rounded-full w-fit inline-block mb-2">Category</div>
+                    <div className="chips flex flex-row gap-2">
+                        {article?.category?.map((category) => <div key={category.categoryId} className="py-1.5 px-2 text-xs bg-gray-200 rounded-full w-fit inline-block mb-2">{category.categoryName}</div>)}
                     </div>
                     <h3 className="font-bold text-black text-xl mb-2">{article.title}</h3>
                     <p className="text-gray-500">{article.excerpt}...</p>

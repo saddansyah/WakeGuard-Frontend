@@ -19,7 +19,6 @@ const Emergency = () => {
         <>
             <Navbar>
                 <Avatar>WG</Avatar>
-                {/* <Menu /> */}
                 <SearchBar placeholder={'Search contact..'} />
             </Navbar>
             <h1 className="font-bold text-2xl text-primary mb-6">Emergency</h1>

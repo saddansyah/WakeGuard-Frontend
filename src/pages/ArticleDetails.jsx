@@ -35,8 +35,8 @@ const ArticleDetails = () => {
             <p className="text-sm text-gray-400">Published at <span className="font-bold">{articles.createdAt}</span></p>
         </div>
         <img src={articles.imageUrl} alt={articles.id} className="rounded-lg mb-6" />
-        <div className="chips mb-4">
-            <div className="p-1.5 text-xs bg-gray-200 rounded-full w-fit inline-block mb-2">Category</div>
+        <div className="chips flex flex-row gap-2 mb-4">
+            {articles?.category?.map((category) => <div key={category.categoryId} className="py-1.5 px-2 text-xs bg-gray-200 rounded-full w-fit inline-block mb-2">{category.categoryName}</div>)}
         </div>
         <ReactMarkdown className="prose mb-20" rehypePlugins={[rehypeRaw]}>
             {articles.body}
