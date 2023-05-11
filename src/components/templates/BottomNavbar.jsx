@@ -47,10 +47,6 @@ const BottomNavbar = () => {
                         </NavLink>
                     </ButtonBase>
                     <div className='relative bottom-5 scale-[1.3] flex flex-col gap-1 items-center justify-center h-full font-light'>
-                        {/* <ButtonBase component="button" sx={{ borderRadius: 450}}>
-                            
-                        </ButtonBase>
-                        <p className='text-gray-700'>Mode</p> */}
                         <Fab color='primary' size='large'>
                             <NavLink to="/driving-mode" exact="true" className={({ isActive }) => isActive ? 'active-driving-mode' : 'text-white transition-all'}>
                                 <div className='scale-150'>

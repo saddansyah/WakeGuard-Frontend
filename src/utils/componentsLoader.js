@@ -14,7 +14,7 @@ import NoContactCard from "@/components/templates/EmergencyContact/NoContactCard
 // Driving Tips
 import ArticleCard from "@/components/templates/DrivingTips/ArticleCard";
 import NoArticleCard from "@/components/templates/DrivingTips/NoArticleCard";
-
+import SelectCategories from "@/components/templates/DrivingTips/SelectCategories";
 
 export {
     SkeletonLoading,
@@ -26,5 +26,6 @@ export {
     SearchBar,
     NoContactCard,
     ArticleCard,
-    NoArticleCard
+    NoArticleCard,
+    SelectCategories
 }
