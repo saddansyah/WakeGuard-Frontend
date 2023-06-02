@@ -1,5 +1,4 @@
 import ArrowBack from "@mui/icons-material/ArrowBack";
-import { Avatar } from "@mui/material";
 import { Navbar } from "@/utils/componentsLoader";
 import { useNavigate } from "react-router";
 

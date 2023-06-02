@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import {
   RouterProvider,
 } from "react-router-dom";
+import { createTheme, ThemeProvider } from '@mui/material';
 
 // User-defined module import
 import { router } from './router';
@@ -24,13 +25,23 @@ import ContactContextProvider from '@/contexts/ContactContext';
 import DisplayContextProvider from '@/contexts/DisplayContext';
 
 
+// MUI Default Font
+const theme = createTheme({
+  typography: {
+    "fontFamily": `"Nunito", sans-serif`,
+  }
+});
+
+
 // Init
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <DisplayContextProvider>
       <ContactContextProvider>
         <ArticleContextProvider>
-          <RouterProvider router={router} fallbackElement={<SkeletonLoading />} />
+          <ThemeProvider theme={theme}>
+            <RouterProvider router={router} fallbackElement={<SkeletonLoading />} />
+          </ThemeProvider>
         </ArticleContextProvider>
       </ContactContextProvider>
     </DisplayContextProvider>

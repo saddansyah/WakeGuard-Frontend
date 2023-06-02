@@ -1,6 +1,4 @@
 import { useEffect } from "react";
-import { useDisplayContext } from "@/hooks/context/useDisplayContext";
-
 
 const useFetch = ({ url, dispatch, type, setLoading, setMessage }) => {
 
