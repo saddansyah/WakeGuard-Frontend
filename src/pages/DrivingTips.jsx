@@ -25,7 +25,7 @@ const DrivingTips = () => {
 
   const filter = (value) => {
     const filtered = articles?.filter((item) =>
-      item.title.toLowerCase().includes(value.toLowerCase()) || item.excerpt.toLowerCase().includes(value.toLowerCase())
+      item.attributes.title.toLowerCase().includes(value.toLowerCase()) || item.attributes.excerpt.toLowerCase().includes(value.toLowerCase())
     );
 
     filtered[0]? setFilteredArticles(filtered) : setFilteredArticles([]);

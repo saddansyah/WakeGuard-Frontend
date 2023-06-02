@@ -31,15 +31,15 @@ const ArticleDetails = () => {
             </ButtonBase>
         </Navbar>
         <div className="title mb-6">
-            <h1 className="font-bold text-2xl text-primary mb-2">{articles.title}</h1>
-            <p className="text-sm text-gray-400">Published at <span className="font-bold">{articles.createdAt}</span></p>
+            <h1 className="font-bold text-2xl text-primary mb-2">{articles?.title}</h1>
+            <p className="text-sm text-gray-400">Published at <span className="font-bold">{articles?.createdAt?.split('T')[0]}</span></p>
         </div>
-        <img src={articles.imageUrl} alt={articles.id} className="rounded-lg mb-6" />
+        <img src={articles?.imageUrl} alt={articles?.id} className="rounded-lg mb-6" />
         <div className="chips flex flex-row gap-2 mb-4">
             {articles?.category?.map((category) => <div key={category.categoryId} className="py-1.5 px-2 text-xs bg-gray-200 rounded-full w-fit inline-block mb-2">{category.categoryName}</div>)}
         </div>
         <ReactMarkdown className="prose mb-20" rehypePlugins={[rehypeRaw]}>
-            {articles.body}
+            {articles?.body}
         </ReactMarkdown>
 
     </>);

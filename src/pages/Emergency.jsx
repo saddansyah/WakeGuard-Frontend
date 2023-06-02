@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
-import Menu from "@mui/icons-material/Menu";
+
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
+
 import { Avatar, Divider, Fab, Grow } from "@mui/material";
 
-import { Navbar, ContactCard, SearchBar, ContactLoading, NoContactCard } from "@/utils/componentsLoader";
+import { Navbar, ContactCard, SearchBar, ContactLoading, NoContactCard, AddContact } from "@/utils/componentsLoader";
 import useFetch from "@/hooks/useFetch";
 import { useContactContext } from "@/hooks/context/useContactContext";
 import { useDisplayContext } from "@/hooks/context/useDisplayContext";
@@ -14,7 +15,26 @@ const Emergency = () => {
     const { contacts, dispatch } = useContactContext();
     const { isPending, message, setLoading, setMessage } = useDisplayContext();
 
+    const [isOpen, setIsOpen] = useState(false);
+
     useFetch({ url, dispatch, type: 'get_contacts', setLoading, setMessage });
+
+    // Add Contact
+
+    const handleDialogOpen = () => {
+        setIsOpen(true);
+    }
+
+    const handleDialogClose = () => {
+        setIsOpen(false);
+    }
+
+    const handleAdd = (event) => {
+        handleDialogOpen();
+
+
+    }
+
 
     // Searching
     const [searchText, setSearchText] = useState('')
@@ -23,11 +43,12 @@ const Emergency = () => {
 
     const filter = (value) => {
         const filtered = contacts?.filter((item) =>
-            item.name.toLowerCase().includes(value.toLowerCase()) || item.number.toLowerCase().includes(value.toLowerCase()) 
+            item.name.toLowerCase().includes(value.toLowerCase()) || item.number.toLowerCase().includes(value.toLowerCase())
         );
 
         filtered[0] ? setFilteredContacts(filtered) : setFilteredContacts([]);
     }
+
 
     return (
         <>
@@ -60,12 +81,43 @@ const Emergency = () => {
                 </div>
             </div>
             <Grow in={true}>
-                <div className="button-add absolute right-0 bottom-16 m-6 z-20">
-                    <Fab color="primary" aria-label="person-add">
+                <div className="button-wrapper absolute right-0 bottom-16 m-6 z-20">
+                    <Fab color="primary" aria-label="person-add" onClick={handleAdd}>
                         <PersonAddIcon />
                     </Fab>
                 </div>
             </Grow>
+            <AddContact
+                isOpen={isOpen}
+                handleAdd={handleAdd}
+                handleDialogOpen={handleDialogOpen}
+                handleDialogClose={handleDialogClose}
+            />
+            {/* <Dialog
+                open={isOpen}
+                onClose={handleDialogClose}
+            >
+                <DialogTitle id="alert-dialog-title">
+                    Add Contact
+                </DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                        You can add contact from your Google account contacts
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <ButtonBase component="div">
+                        <button className="p-2 text-primary" onClick={handleDialogClose}>
+                            Close
+                        </button>
+                    </ButtonBase>
+                    <ButtonBase component="div">
+                        <button className="p-2 rounded-lg bg-accent text-white" onClick={handleDialogClose}>
+                        Add  <AddIcon/> 
+                        </button>
+                    </ButtonBase>
+                </DialogActions>
+            </Dialog> */}
         </>
     );
 }

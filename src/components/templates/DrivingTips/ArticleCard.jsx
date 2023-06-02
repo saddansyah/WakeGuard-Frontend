@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ButtonBase, Chip } from "@mui/material";
 
 const ArticleCard = ({ article }) => {
+
     return (<>
         <div
             key={article.postId}

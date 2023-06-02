@@ -4,6 +4,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { createTheme, ThemeProvider } from '@mui/material';
+import { AnimatePresence } from "framer-motion";
 
 // User-defined module import
 import { router } from './router';
@@ -39,9 +40,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <DisplayContextProvider>
       <ContactContextProvider>
         <ArticleContextProvider>
-          <ThemeProvider theme={theme}>
-            <RouterProvider router={router} fallbackElement={<SkeletonLoading />} />
-          </ThemeProvider>
+          <AnimatePresence>
+            <ThemeProvider theme={theme}>
+              <RouterProvider router={router} fallbackElement={<SkeletonLoading />} />
+            </ThemeProvider>
+          </AnimatePresence>
         </ArticleContextProvider>
       </ContactContextProvider>
     </DisplayContextProvider>
