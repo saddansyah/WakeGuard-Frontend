@@ -24,6 +24,7 @@ if ('serviceWorker' in navigator) {
 import ArticleContextProvider from '@/contexts/ArticleContext';
 import ContactContextProvider from '@/contexts/ContactContext';
 import DisplayContextProvider from '@/contexts/DisplayContext';
+import AuthContextProvider from '@/contexts/AuthContext';
 
 
 // MUI Default Font
@@ -37,16 +38,18 @@ const theme = createTheme({
 // Init
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <DisplayContextProvider>
-      <ContactContextProvider>
-        <ArticleContextProvider>
-          <AnimatePresence>
-            <ThemeProvider theme={theme}>
-              <RouterProvider router={router} fallbackElement={<SkeletonLoading />} />
-            </ThemeProvider>
-          </AnimatePresence>
-        </ArticleContextProvider>
-      </ContactContextProvider>
-    </DisplayContextProvider>
+    <AuthContextProvider>
+      <DisplayContextProvider>
+        <ContactContextProvider>
+          <ArticleContextProvider>
+            <AnimatePresence>
+              <ThemeProvider theme={theme}>
+                <RouterProvider router={router} fallbackElement={<SkeletonLoading />} />
+              </ThemeProvider>
+            </AnimatePresence>
+          </ArticleContextProvider>
+        </ContactContextProvider>
+      </DisplayContextProvider>
+    </AuthContextProvider>
   </React.StrictMode>
 )

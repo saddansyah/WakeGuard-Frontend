@@ -5,8 +5,6 @@ import {
   Navigate
 } from "react-router-dom";
 
-
-
 // User-defined
 import {
   App,
@@ -24,12 +22,14 @@ import {
 } from '@/utils/pagesLoader';
 
 import DynamicTitle from "@/utils/dynamicTitle";
+import { useAuthContext } from "@/hooks/context/useAuthContext";
 
 const isLoggedIn = () => {
 
-  // Auth logic...
+  const user = sessionStorage.getItem('user');
 
-  return true;
+  // Auth logic...
+  return user
 }
 
 const router = createBrowserRouter(createRoutesFromElements(

@@ -1,16 +1,12 @@
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import GoogleIcon from '@mui/icons-material/Google';
-import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+import { useAuthContext } from '@/hooks/context/useAuthContext';
 
 
 // TODO remove, this demo shouldn't need to reset the theme.
@@ -22,8 +18,18 @@ const defaultTheme = createTheme({
 });
 
 export default function Login() {
+
+    const { user, dispatch } = useAuthContext();
+
     const handleSubmit = (event) => {
         event.preventDefault();
+
+        sessionStorage.setItem('user', JSON.stringify({
+            token: 123,
+            name: "saddan"
+        }))
+
+        window.location.replace('')
 
     };
 
@@ -44,7 +50,7 @@ export default function Login() {
                             color='primary'
                             fullWidth
                             variant="contained"
-                            sx={{ mt: 3, mb: 2, py: 1}}
+                            sx={{ mt: 3, mb: 2, py: 1 }}
                             startIcon={<GoogleIcon />}
                         >
                             Login with Google

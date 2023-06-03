@@ -8,11 +8,18 @@ import { Avatar, ButtonBase, InputAdornment, TextField } from "@mui/material";
 import { Navbar } from "@/utils/componentsLoader";
 
 const Profile = () => {
+
     const dummyUser = {
         username: 'wakeguard',
         name: 'Wakeguard User',
         email: 'gmail@wakeguard.com',
         phoneNumber: '081293812939'
+    }
+
+    const handleLogout = () => {
+        sessionStorage.removeItem('user');
+
+        window.location.replace('login')
     }
     return (
         <>
@@ -92,7 +99,7 @@ const Profile = () => {
                 </div>
             </div>
             <div className="logout mt-12 mb-20">
-                <ButtonBase component="button" className="w-full">
+                <ButtonBase component="button" className="w-full" onClick={handleLogout}>
                     <div className="card bg-red-500 text-white text-center font-semibold w-full">Log Out</div>
                 </ButtonBase>
             </div>
