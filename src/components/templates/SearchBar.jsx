@@ -11,11 +11,11 @@ const SearchBar = ({ placeholder, searchText, setSearchText, filter}) => {
     }
     return (
         <>
-            <div className='flex items-center gap-1'>
+            <div className='flex items-center'>
                 <InputBase
                     id='search'
                     className='bg-gray-200 rounded-full hover:outline hover:outline-1 hover:outline-slate-400'
-                    sx={{ px: 2 }}
+                    sx={{ px: 1.5 }}
                     placeholder={placeholder}
                     size='large'
                     fullWidth

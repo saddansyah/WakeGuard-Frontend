@@ -8,11 +8,18 @@ import { Avatar, ButtonBase, InputAdornment, TextField } from "@mui/material";
 import { Navbar } from "@/utils/componentsLoader";
 
 const Profile = () => {
+
     const dummyUser = {
         username: 'wakeguard',
         name: 'Wakeguard User',
         email: 'gmail@wakeguard.com',
         phoneNumber: '081293812939'
+    }
+
+    const handleLogout = () => {
+        sessionStorage.removeItem('user');
+
+        window.location.replace('login')
     }
     return (
         <>
@@ -24,8 +31,8 @@ const Profile = () => {
             <div className="profile-summary flex flex-row gap-8 items-start h-fit">
                 <Avatar src="https://assets.pikiran-rakyat.com/crop/0x0:0x0/x/photo/2021/05/18/1067981407.jpg" sx={{ width: 120, height: 120, fontSize: 50 }}>SA</Avatar>
                 <div className="content-right">
-                    <div className="username card">
-                        <h2 className="text-2xl font-semibold">@{dummyUser.username}</h2>
+                    <div className="username card p-3">
+                        <h2 className="text-xl font-semibold">@{dummyUser.username}</h2>
                     </div>
                     <div className="edit-button mt-3"></div>
                     <ButtonBase component="div">
@@ -92,7 +99,7 @@ const Profile = () => {
                 </div>
             </div>
             <div className="logout mt-12 mb-20">
-                <ButtonBase component="button" className="w-full">
+                <ButtonBase component="button" className="w-full" onClick={handleLogout}>
                     <div className="card bg-red-500 text-white text-center font-semibold w-full">Log Out</div>
                 </ButtonBase>
             </div>

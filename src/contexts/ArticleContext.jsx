@@ -18,11 +18,11 @@ export const articleReducer = (state, action) => {
             }
         case 'changed_article':
             return {
-                articles: state.article.map((item) => {return item._id !== action.payload._id ? item : action.payload}).sort((a, b) => {return Number(b.isPinned) - Number(a.isPinned)})
+                articles: state.article.map((item) => {return item.id !== action.payload.id ? item : action.payload}).sort((a, b) => {return Number(b.isPinned) - Number(a.isPinned)})
             }
         case 'deleted_article':
             return {
-                articles: state.article.filter((item) => { return item._id !== action.payload._id })
+                articles: state.article.filter((item) => { return item.id !== action.payload.id })
             }
         default:
             return state

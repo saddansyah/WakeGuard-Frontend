@@ -14,6 +14,7 @@ import {
   Register,
   Home,
   DrivingMode,
+  DrivingModeStart,
   DrivingTips,
   Emergency,
   Profile,
@@ -21,12 +22,14 @@ import {
 } from '@/utils/pagesLoader';
 
 import DynamicTitle from "@/utils/dynamicTitle";
+import { useAuthContext } from "@/hooks/context/useAuthContext";
 
 const isLoggedIn = () => {
 
-  // Auth logic...
+  const user = sessionStorage.getItem('user');
 
-  return true;
+  // Auth logic...
+  return user
 }
 
 const router = createBrowserRouter(createRoutesFromElements(
@@ -34,6 +37,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route exact path='/' element={isLoggedIn() ? <App /> : <Navigate to='auth/login' replace />}>
       <Route path='/' element={<DynamicTitle title="Home"><Home /></DynamicTitle>} />
       <Route path='/driving-mode' element={<DynamicTitle title="Driving Mode"><DrivingMode /></DynamicTitle>} />
+      <Route path='/driving-mode/start' element={<DynamicTitle title="Driving Mode - Starting"><DrivingModeStart /></DynamicTitle>} />
       <Route path='/emergency' element={<DynamicTitle title="Emergency"><Emergency /></DynamicTitle>} />
       <Route path='/driving-tips' element={<DynamicTitle title="Driving Tips"><DrivingTips /></DynamicTitle>} />
       <Route path='/driving-tips/:postId' element={<DynamicTitle title="Driving Tips"><ArticleDetails /></DynamicTitle>} />

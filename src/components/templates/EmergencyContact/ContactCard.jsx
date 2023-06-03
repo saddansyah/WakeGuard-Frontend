@@ -2,13 +2,14 @@ import CallIcon from '@mui/icons-material/Call';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarIcon from '@mui/icons-material/Star';
 import { ButtonBase } from '@mui/material';
-
-const handleCall = (event, phoneNumber) => {
-    // call action
-    alert('Calling ' + phoneNumber)
-}
+import { useNavigate,  } from 'react-router-dom';
 
 const ContactCard = ({ contact }) => {
+    const navigate = useNavigate();
+
+    const formatNumber = (phoneNumber) => {
+        return phoneNumber.replace(/^0/, '+62')
+    }
 
     return (
         <div className={`contact card flex flex-row text-sm mb-3 ${contact.isPinned ? `bg-secondary text-white` : `bg-white`}`}>
@@ -18,7 +19,7 @@ const ContactCard = ({ contact }) => {
                 <p className="">{contact.number}</p>
             </div>
             <div className="action basis-1/5 flex justify-center items-center">
-                <ButtonBase component="button" sx={{ borderRadius: 500 }} onClick={() => handleCall(event, contact.number)}>
+                <ButtonBase component="a" sx={{ borderRadius: 500 }} href={`tel:${formatNumber(contact.number)}`}>
                     <div className={`${contact.isPinned ? `bg-white text-secondary` : `bg-secondary text-white`} w-fit p-2 rounded-full`}>
                         <CallIcon />
                     </div>

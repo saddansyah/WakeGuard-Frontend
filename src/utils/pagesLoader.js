@@ -9,6 +9,7 @@ import Login from "@/pages/Login";
 import Register from "@/pages/Register";
 import Home from "@/pages/Home";
 import DrivingMode from "@/pages/DrivingMode";
+import DrivingModeStart from "@/pages/DrivingModeStart";
 import DrivingTips from "@/pages/DrivingTips";
 import Emergency from "@/pages/Emergency";
 import Profile from "@/pages/Profile";
@@ -24,6 +25,7 @@ export {
     Register,
     Home,
     DrivingMode,
+    DrivingModeStart,
     DrivingTips,
     Emergency,
     Profile,
