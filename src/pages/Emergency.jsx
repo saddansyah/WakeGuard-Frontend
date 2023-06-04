@@ -81,7 +81,7 @@ const Emergency = () => {
                 </div>
             </div>
             <Grow in={true}>
-                <div className="button-wrapper absolute right-0 bottom-16 m-6 z-20">
+                <div className="button-wrapper absolute right-0 bottom-16 m-6 z-10">
                     <Fab color="primary" aria-label="person-add" onClick={handleAdd}>
                         <PersonAddIcon />
                     </Fab>
