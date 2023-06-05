@@ -33,11 +33,10 @@ const Emergency = () => {
 
     const handleAdd = (event) => {
         handleDialogOpen();
-        getContacts();
-
-        if(contacts){
-            alert(contacts[0]);
-        }
+        
+        useEffect(() => {
+            getContacts();
+        }, [isOpen]);
     }
 
     // Searching
