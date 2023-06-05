@@ -9,8 +9,10 @@ const useContact = ({ setSelectedContact }) => {
 
         try {
             const contacts = await navigator.contacts.select(props, opts);
-            setSelectedContact(contacts);
-            alert(contacts);
+            if (contacts) {
+                setSelectedContact(contacts);
+                alert(typeof(contacts));
+            }
         }
         catch (err) {
             alert(err);
