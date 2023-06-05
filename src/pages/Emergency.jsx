@@ -32,11 +32,8 @@ const Emergency = () => {
     }
 
     const handleAdd = (event) => {
-        handleDialogOpen();
-        
-        useEffect(() => {
-            getContacts();
-        }, [isOpen]);
+        // handleDialogOpen();
+        getContacts();
     }
 
     // Searching
