@@ -32,7 +32,7 @@ const BottomNavbar = () => {
     return (
         <>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                <div className="bg-white fixed bottom-0 left-0 right-0 z-50 w-full max-w-lg mx-auto h-16 shadow-[0_-5px_10px_-5px_rgba(0,0,0,0.09)] rounded-t-md">
+                <div className="bg-white fixed bottom-0 left-0 right-0 z-40 w-full max-w-lg mx-auto h-16 shadow-[0_-5px_10px_-5px_rgba(0,0,0,0.09)] rounded-t-md">
                     <ul className="grid gap-2 justify-items-stretch h-full grid-cols-5 mx-auto font-medium text-xs">
                         <ButtonBase component="li">
                             <NavLink to="/" exact="true" className={({ isActive }) => isActive ? 'text-accent  transition-all w-full' : 'text-gray-700  transition-all w-full'}>

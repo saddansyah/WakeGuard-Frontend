@@ -2,12 +2,14 @@ import * as tf from "@tensorflow/tfjs";
 
 const useModel = ({ webcamRef, setResult }) => {
 
-    const runModel = async () => {
-        const model = await tf.loadGraphModel('/models/model.json');
+    const runModel = async (setInitializing) => {
+        setInitializing(true)
+        const model = await tf.loadGraphModel('https://wakeguard.blob.core.windows.net/wakeguard/models/model.json');
         const INTERVAL = 200;
-
+        
         if (model) {
-            console.log('Model successfully loaded');
+            console.log('Model is succesfully loaded');
+            setInitializing(false)
             setInterval(() => {
                 detect(model);
             }, INTERVAL);
@@ -39,7 +41,7 @@ const useModel = ({ webcamRef, setResult }) => {
             const classes = await obj[4].array()
 
             // Set result
-            setResult(classes[0].reduce((acc, curr) => { return acc + curr }, 0) > 160 ? 'Drowsy' : 'Awake');
+            setResult(classes[0].reduce((acc, curr) => { return acc + curr }, 0) > 161 ? 'Drowsy' : 'Awake');
 
             // Dispose variables to improve perfomance
             tf.dispose(img)

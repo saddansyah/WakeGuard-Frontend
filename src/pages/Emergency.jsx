@@ -8,19 +8,21 @@ import { Navbar, ContactCard, SearchBar, ContactLoading, NoContactCard, AddConta
 import useFetch from "@/hooks/useFetch";
 import { useContactContext } from "@/hooks/context/useContactContext";
 import { useDisplayContext } from "@/hooks/context/useDisplayContext";
+import useContact from "@/hooks/useContact";
 
 const Emergency = () => {
 
     const url = import.meta.env.VITE_APP_DUMMY_URL + '/contacts';
     const { contacts, dispatch } = useContactContext();
+    const [selectedContact, setSelectedContact] = useState();
     const { isPending, message, setLoading, setMessage } = useDisplayContext();
+    const { getContacts } = useContact({ setSelectedContact });
 
     const [isOpen, setIsOpen] = useState(false);
 
     useFetch({ url, dispatch, type: 'get_contacts', setLoading, setMessage });
 
     // Add Contact
-
     const handleDialogOpen = () => {
         setIsOpen(true);
     }
@@ -31,10 +33,12 @@ const Emergency = () => {
 
     const handleAdd = (event) => {
         handleDialogOpen();
+        getContacts();
 
-
+        if(contacts){
+            alert(contacts[0]);
+        }
     }
-
 
     // Searching
     const [searchText, setSearchText] = useState('')
