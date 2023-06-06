@@ -6,12 +6,12 @@ const useModel = ({ webcamRef, setResult }) => {
         setInitializing(true)
         const model = await tf.loadGraphModel('https://wakeguard.blob.core.windows.net/wakeguard/models/model.json');
         const INTERVAL = 200;
-        
+
         if (model) {
             console.log('Model is succesfully loaded');
             setInitializing(false)
             setInterval(() => {
-                detect(model);
+                // detect(model);
             }, INTERVAL);
         }
 

@@ -19,6 +19,7 @@
     "@mui/material": "^5.11.13",
     "@tailwindcss/typography": "^0.5.9",
     "@tensorflow/tfjs": "^4.6.0",
+    "axios": "^1.4.0",
     "framer-motion": "^10.12.16",
     "json-server": "^0.17.3",
     "markdown": "^0.5.0",

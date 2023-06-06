@@ -6,17 +6,16 @@ import { Navbar, SearchBar, ArticleLoading, ArticleCard, NoArticleCard, SelectCa
 import useFetch from "@/hooks/useFetch";
 import { useArticleContext } from "@/hooks/context/useArticleContext";
 import { useDisplayContext } from "@/hooks/context/useDisplayContext";
-import useGetCategories from "@/hooks/useGetCategories";
 
 const DrivingTips = () => {
 
   const baseUrl = import.meta.env.VITE_APP_DUMMY_URL;
   const { articles, dispatch } = useArticleContext();
-  const [categories, setCategories] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const categories = articles?.map(article => article.category)
   const { isPending, message, setLoading, setMessage } = useDisplayContext();
 
   useFetch({ url: baseUrl + '/articles', dispatch, type: 'get_articles', setLoading, setMessage });
-  useGetCategories({ setCategories, setLoading, setMessage });
 
   // Searching
   const [searchText, setSearchText] = useState('')
@@ -25,12 +24,13 @@ const DrivingTips = () => {
 
   const filter = (value) => {
     const filtered = articles?.filter((item) =>
-      item.attributes.title.toLowerCase().includes(value.toLowerCase()) || item.attributes.excerpt.toLowerCase().includes(value.toLowerCase())
+      item.title.toLowerCase().includes(value.toLowerCase()) || item.excerpt.toLowerCase().includes(value.toLowerCase())
     );
 
-    filtered[0]? setFilteredArticles(filtered) : setFilteredArticles([]);
+    filtered[0] ? setFilteredArticles(filtered) : setFilteredArticles([]);
   }
 
+  console.log(categories)
   return (
     <>
       <Navbar>
@@ -43,11 +43,11 @@ const DrivingTips = () => {
         />
       </Navbar>
       <h1 className="font-bold text-2xl text-primary mb-6">Driving Tips</h1>
-      <SelectCategories categories={categories} setCategories={setCategories} />
+      <SelectCategories categories={selectedCategories} setCategories={setSelectedCategories} />
       <div className="wrapper mb-20">
         <div className="cards grid gap-2">
           {!filteredArticles.length && (isPending ? <ArticleLoading /> : <NoArticleCard />)}
-          {filteredArticles[0] && filteredArticles?.map((article, id) => <ArticleCard key={id} article={article} />)}
+          {filteredArticles[0] && filteredArticles?.map((article, id) => <ArticleCard key={article._id} article={article} />)}
         </div>
       </div>
     </>
