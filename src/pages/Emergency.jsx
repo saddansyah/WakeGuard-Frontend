@@ -10,6 +10,8 @@ import { useContactContext } from "@/hooks/context/useContactContext";
 import { useDisplayContext } from "@/hooks/context/useDisplayContext";
 import useContact from "@/hooks/useContact";
 import useAddContact from "../hooks/contacts/useAddContact";
+import useDeleteContact from "../hooks/contacts/useDeleteContact";
+import usePinContact from "../hooks/contacts/usePinContact";
 
 const Emergency = () => {
 
@@ -21,17 +23,8 @@ const Emergency = () => {
     const { isPending, message, setLoading, setMessage } = useDisplayContext();
 
     const { getContacts } = useContact({ setSelectedContact });
-    const { handleAdd, add } = useAddContact({ 
-        url, 
-        payload: selectedContact, 
-        dispatch,
-        type: 'added_contact',
-        setLoading,
-        setMessage
-     });
-
-
-    useFetch({ url, dispatch, type: 'get_contacts', setLoading, setMessage });
+    const { handleDelete } = useDeleteContact({ url, dispatch, type: 'deleted_contact', setLoading, setMessage });
+    const { handlePin } = usePinContact({ url, dispatch, type: 'changed_contact', setLoading, setMessage });
 
     // Add Contact
     const handleDialogOpen = () => {
@@ -45,6 +38,20 @@ const Emergency = () => {
     const handleSelectContact = (event) => {
         getContacts();
     }
+
+    const { handleAdd, add } = useAddContact({
+        url,
+        payload: selectedContact,
+        dispatch,
+        type: 'added_contact',
+        setLoading,
+        setMessage,
+        handleDialogClose
+    });
+
+
+    useFetch({ url, dispatch, type: 'get_contacts', setLoading, setMessage });
+
 
     // Searching
     const [searchText, setSearchText] = useState('')
@@ -71,13 +78,17 @@ const Emergency = () => {
                 />
             </Navbar>
             <h1 className="font-bold text-2xl text-primary mb-6">Emergency</h1>
-            <div className="contacts h-[70vh] overflow-y-auto">
+            <div className="contacts h-[65vh] overflow-y-auto">
                 <div className="one-tap-call">
                     <h2 className="font-bold mb-2">One-tap Call</h2>
                     <div className="cards grid grid-cols-1 gap-2">
                         <div className="one-tap-call">
                             {/* {!filteredContacts.length && (isPending ? <ContactLoading /> : <NoContactCard />)} */}
-                            {filteredContacts[0] && filteredContacts?.map((contact, id) => contact.isPinned && <ContactCard key={contact._id} contact={contact} />)}
+                            {filteredContacts[0] && filteredContacts?.map((contact, id) => contact.isPinned && <ContactCard isPending={isPending}
+                                handleDelete={handleDelete}
+                                handlePin={handlePin}
+                                key={contact._id}
+                                contact={contact} />)}
                         </div>
 
                     </div>
@@ -86,7 +97,11 @@ const Emergency = () => {
                 <div className="contacts mt-3">
                     <h2 className="font-bold mb-2">Contacts</h2>
                     {!filteredContacts.length && (isPending ? <ContactLoading /> : <NoContactCard />)}
-                    {filteredContacts[0] && filteredContacts?.map((contact, id) => !contact.isPinned && <ContactCard key={contact._id} contact={contact} />)}
+                    {filteredContacts[0] && filteredContacts?.map((contact, id) => !contact.isPinned && <ContactCard isPending={isPending}
+                        handleDelete={handleDelete}
+                        handlePin={handlePin}
+                        key={contact._id}
+                        contact={contact} />)}
                 </div>
             </div>
             <Grow in={true}>
@@ -103,6 +118,7 @@ const Emergency = () => {
                 handleDialogOpen={handleDialogOpen}
                 handleDialogClose={handleDialogClose}
                 selectedContact={selectedContact}
+                setSelectedContact={setSelectedContact}
                 isPending={isPending}
             />
             {/* <Dialog
