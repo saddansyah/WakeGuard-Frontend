@@ -11,7 +11,7 @@ const useModel = ({ webcamRef, setResult }) => {
             console.log('Model is succesfully loaded');
             setInitializing(false)
             setInterval(() => {
-                // detect(model);
+                detect(model);
             }, INTERVAL);
         }
 
@@ -43,8 +43,7 @@ const useModel = ({ webcamRef, setResult }) => {
             // Set result
             setResult(classes[0].reduce((acc, curr) => { return acc + curr }, 0) > 4 ? 'Drowsy' : 'Awake');
 
-            console.log(classes[0].reduce((acc, curr) => { return acc + curr }, 0))
-
+            // console.log(classes[0].reduce((acc, curr) => { return acc + curr }, 0))
             // Dispose variables to improve perfomance
             tf.dispose(img)
             tf.dispose(resized)
