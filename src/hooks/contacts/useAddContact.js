@@ -1,13 +1,27 @@
 import axios from "axios";
 
-const useAddContact = ({ url, data, dispatch, type, setLoading, setMessage }) => {
+const useAddContact = ({ url, payload, dispatch, type, setLoading, setMessage }) => {
     const add = async () => {
         setLoading(true);
         try {
+            const contacts = payload?.map(item => {
+                return {
+                    name: item.name[0],
+                    number: item.tel[0],
+                    isPinned: false,
+                    user_id: 1
+                }
+            })
+
+            // const dummyContact = {
+            //     name: 'Admin',
+            //     number: '081393789949',
+            //     isPinned: false,
+            //     user_id: 1
+            // }
+
             const json = await axios.post(url,
-                {
-                    ...data
-                },
+                contacts,
                 {
                     headers:
                     {
@@ -16,17 +30,15 @@ const useAddContact = ({ url, data, dispatch, type, setLoading, setMessage }) =>
                     }
                 });
 
-            const { response, status } = await json.data;
-            console.log(response);
+            const { data, status } = await json.data;
+            console.log(data)
 
-            dispatch({ type, payload: response });
+            dispatch({ type, payload: data });
             setLoading(false);
-            setMessage({ error: false, severity: 'success', message: `Successfully fetched at ${url}` })
-
+            setMessage({ error: false, severity: 'success', message: `Successfully fetched at ${url}` });
         }
         catch (error) {
             alert(error.stack);
-            console.error(error);
             setMessage({ error: true, severity: 'error', message: error || `Something bad is happened` });
             setLoading(false);
         }
@@ -35,10 +47,8 @@ const useAddContact = ({ url, data, dispatch, type, setLoading, setMessage }) =>
     const handleAdd = async (e) => {
         e.stopPropagation();
         e.preventDefault();
+        await add();
 
-        if (!!data.length) {
-            await add();
-        }
 
     }
 

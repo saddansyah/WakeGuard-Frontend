@@ -8,7 +8,7 @@ const ContactCard = ({ contact }) => {
     const navigate = useNavigate();
 
     const formatNumber = (phoneNumber) => {
-        return phoneNumber.replace(/^0/, '+62')
+        return phoneNumber?.replace(/^0/, '+62');
     }
 
     return (

@@ -23,7 +23,7 @@ const Emergency = () => {
     const { getContacts } = useContact({ setSelectedContact });
     const { handleAdd, add } = useAddContact({ 
         url, 
-        data: selectedContact, 
+        payload: selectedContact, 
         dispatch,
         type: 'added_contact',
         setLoading,
@@ -103,6 +103,7 @@ const Emergency = () => {
                 handleDialogOpen={handleDialogOpen}
                 handleDialogClose={handleDialogClose}
                 selectedContact={selectedContact}
+                isPending={isPending}
             />
             {/* <Dialog
                 open={isOpen}

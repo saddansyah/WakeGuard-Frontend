@@ -4,11 +4,12 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import AddIcon from '@mui/icons-material/Add';
 
 
-const AddContact = ({ isOpen, handleDialogClose, handleDialogOpen, handleAdd, selectedContact, handleSelectContact }) => {
+const AddContact = ({ isOpen, handleDialogClose, handleDialogOpen, handleAdd, selectedContact, handleSelectContact, isPending }) => {
     return (<>
         <Dialog
             open={isOpen}
@@ -26,7 +27,7 @@ const AddContact = ({ isOpen, handleDialogClose, handleDialogOpen, handleAdd, se
                     {selectedContact && selectedContact?.map(contact =>
                         <>
                             <div className="card py-1 bg-white">
-                                <h4 className='font-bold text-primary'>{contact.name}</h4>
+                                <h4 className='font-bold text-primary'>{contact.name[0]}</h4>
                                 <p>{contact.tel[0]}</p>
                             </div>
                         </>
@@ -41,7 +42,7 @@ const AddContact = ({ isOpen, handleDialogClose, handleDialogOpen, handleAdd, se
                 </ButtonBase>
                 <ButtonBase component="div">
                     <button className="p-2 rounded-lg bg-accent text-white" onClick={handleAdd}>
-                        Add  <AddIcon />
+                        {isPending ?  <CircularProgress size={'1em'} color='inherit'/> : <>Add <AddIcon /></>}
                     </button>
                 </ButtonBase>
             </DialogActions>
