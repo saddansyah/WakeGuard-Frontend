@@ -37,6 +37,7 @@ const DrivingModeStart = () => {
                     </button>
                 </Navbar>
                 <div className="wrapper-focus-mode h-[65vh] flex flex-col mt-[30%] justify-start items-center">
+                    {initializing && <h3 className="text-white font-semibold">Initializing...</h3>}
                     <div className={`alert card py-1 px-4 rounded-full mb-24 text-primary ${result === 'Drowsy' && 'bg-red-400 text-white border-red-500'}`}>
                         <span className="mr-1">{result === 'Awake' && 'You are still awake'}{result === 'Drowsy' && 'You look so sleepy'}</span> <VisibilityIcon />
                     </div>

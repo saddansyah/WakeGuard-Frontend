@@ -13,13 +13,6 @@ const useAddContact = ({ url, payload, dispatch, type, setLoading, setMessage })
                 }
             })
 
-            // const dummyContact = {
-            //     name: 'Admin',
-            //     number: '081393789949',
-            //     isPinned: false,
-            //     user_id: 1
-            // }
-
             const json = await axios.post(url,
                 contacts,
                 {

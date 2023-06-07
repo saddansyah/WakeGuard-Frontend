@@ -4,8 +4,8 @@ const useModel = ({ webcamRef, setResult }) => {
 
     const runModel = async (setInitializing) => {
         setInitializing(true)
-        const model = await tf.loadGraphModel('https://wakeguard.blob.core.windows.net/wakeguard/classify4Model/model.json');
-        const INTERVAL = 200;
+        const model = await tf.loadGraphModel('https://wakeguard.blob.core.windows.net/wakeguard/models/model.json');
+        const INTERVAL = 100;
 
         if (model) {
             console.log('Model is succesfully loaded');
@@ -38,10 +38,10 @@ const useModel = ({ webcamRef, setResult }) => {
             const expanded = casted.expandDims(0)
             const obj = await net.executeAsync(expanded)
 
-            const classes = await obj[4].array()
+            const classes = await obj[0].array();
 
             // Set result
-            setResult(classes[0].reduce((acc, curr) => { return acc + curr }, 0) > 162 ? 'Drowsy' : 'Awake');
+            setResult(classes[0].reduce((acc, curr) => { return acc + curr }, 0) > 4 ? 'Drowsy' : 'Awake');
 
             // Dispose variables to improve perfomance
             tf.dispose(img)
@@ -51,7 +51,6 @@ const useModel = ({ webcamRef, setResult }) => {
             tf.dispose(obj)
         }
     }
-
 
     return { runModel }
 

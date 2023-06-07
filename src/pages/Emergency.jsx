@@ -8,10 +8,12 @@ import { Navbar, ContactCard, SearchBar, ContactLoading, NoContactCard, AddConta
 import useFetch from "@/hooks/useFetch";
 import { useContactContext } from "@/hooks/context/useContactContext";
 import { useDisplayContext } from "@/hooks/context/useDisplayContext";
+import { useAuthContext } from '@/hooks/context/useAuthContext';
+
 import useContact from "@/hooks/useContact";
-import useAddContact from "../hooks/contacts/useAddContact";
-import useDeleteContact from "../hooks/contacts/useDeleteContact";
-import usePinContact from "../hooks/contacts/usePinContact";
+import useAddContact from "@/hooks/contacts/useAddContact";
+import useDeleteContact from "@/hooks/contacts/useDeleteContact";
+import usePinContact from "@/hooks/contacts/usePinContact";
 
 const Emergency = () => {
 
@@ -21,6 +23,7 @@ const Emergency = () => {
 
     const { contacts, dispatch } = useContactContext();
     const { isPending, message, setLoading, setMessage } = useDisplayContext();
+    const { user } = useAuthContext();
 
     const { getContacts } = useContact({ setSelectedContact });
     const { handleDelete } = useDeleteContact({ url, dispatch, type: 'deleted_contact', setLoading, setMessage });
@@ -69,7 +72,7 @@ const Emergency = () => {
     return (
         <>
             <Navbar>
-                <Avatar>WG</Avatar>
+                <img src={user && user?.photoURL} style={{ width: '3em', height: '3em', borderRadius: 1000 }} alt="user profile" />
                 <SearchBar
                     placeholder={'Type name/number..'}
                     searchText={searchText}
