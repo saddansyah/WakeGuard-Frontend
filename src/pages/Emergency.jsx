@@ -8,19 +8,25 @@ import { Navbar, ContactCard, SearchBar, ContactLoading, NoContactCard, AddConta
 import useFetch from "@/hooks/useFetch";
 import { useContactContext } from "@/hooks/context/useContactContext";
 import { useDisplayContext } from "@/hooks/context/useDisplayContext";
+import useContact from "@/hooks/useContact";
+import useAddContact from "../hooks/contacts/useAddContact";
+import useDeleteContact from "../hooks/contacts/useDeleteContact";
+import usePinContact from "../hooks/contacts/usePinContact";
 
 const Emergency = () => {
 
     const url = import.meta.env.VITE_APP_DUMMY_URL + '/contacts';
+    const [selectedContact, setSelectedContact] = useState([]);
+    const [isOpen, setIsOpen] = useState(false);
+
     const { contacts, dispatch } = useContactContext();
     const { isPending, message, setLoading, setMessage } = useDisplayContext();
 
-    const [isOpen, setIsOpen] = useState(false);
-
-    useFetch({ url, dispatch, type: 'get_contacts', setLoading, setMessage });
+    const { getContacts } = useContact({ setSelectedContact });
+    const { handleDelete } = useDeleteContact({ url, dispatch, type: 'deleted_contact', setLoading, setMessage });
+    const { handlePin } = usePinContact({ url, dispatch, type: 'changed_contact', setLoading, setMessage });
 
     // Add Contact
-
     const handleDialogOpen = () => {
         setIsOpen(true);
     }
@@ -29,11 +35,22 @@ const Emergency = () => {
         setIsOpen(false);
     }
 
-    const handleAdd = (event) => {
-        handleDialogOpen();
-
-
+    const handleSelectContact = (event) => {
+        getContacts();
     }
+
+    const { handleAdd, add } = useAddContact({
+        url,
+        payload: selectedContact,
+        dispatch,
+        type: 'added_contact',
+        setLoading,
+        setMessage,
+        handleDialogClose
+    });
+
+
+    useFetch({ url, dispatch, type: 'get_contacts', setLoading, setMessage });
 
 
     // Searching
@@ -49,7 +66,6 @@ const Emergency = () => {
         filtered[0] ? setFilteredContacts(filtered) : setFilteredContacts([]);
     }
 
-
     return (
         <>
             <Navbar>
@@ -62,13 +78,17 @@ const Emergency = () => {
                 />
             </Navbar>
             <h1 className="font-bold text-2xl text-primary mb-6">Emergency</h1>
-            <div className="contacts h-[70vh] overflow-y-auto">
+            <div className="contacts h-[65vh] overflow-y-auto">
                 <div className="one-tap-call">
                     <h2 className="font-bold mb-2">One-tap Call</h2>
                     <div className="cards grid grid-cols-1 gap-2">
                         <div className="one-tap-call">
-                            {!filteredContacts.length && (isPending ? <ContactLoading /> : <NoContactCard />)}
-                            {filteredContacts[0] && filteredContacts?.map(contact => contact.isPinned && <ContactCard key={contact.number} contact={contact} />)}
+                            {/* {!filteredContacts.length && (isPending ? <ContactLoading /> : <NoContactCard />)} */}
+                            {filteredContacts[0] && filteredContacts?.map((contact, id) => contact.isPinned && <ContactCard isPending={isPending}
+                                handleDelete={handleDelete}
+                                handlePin={handlePin}
+                                key={contact._id}
+                                contact={contact} />)}
                         </div>
 
                     </div>
@@ -77,12 +97,16 @@ const Emergency = () => {
                 <div className="contacts mt-3">
                     <h2 className="font-bold mb-2">Contacts</h2>
                     {!filteredContacts.length && (isPending ? <ContactLoading /> : <NoContactCard />)}
-                    {filteredContacts[0] && filteredContacts?.map(contact => !contact.isPinned && <ContactCard key={contact.number} contact={contact} />)}
+                    {filteredContacts[0] && filteredContacts?.map((contact, id) => !contact.isPinned && <ContactCard isPending={isPending}
+                        handleDelete={handleDelete}
+                        handlePin={handlePin}
+                        key={contact._id}
+                        contact={contact} />)}
                 </div>
             </div>
             <Grow in={true}>
-                <div className="button-wrapper absolute right-0 bottom-16 m-6 z-20">
-                    <Fab color="primary" aria-label="person-add" onClick={handleAdd}>
+                <div className="button-wrapper fixed right-0 bottom-16 m-6 z-10">
+                    <Fab color="primary" aria-label="person-add" onClick={handleDialogOpen}>
                         <PersonAddIcon />
                     </Fab>
                 </div>
@@ -90,8 +114,12 @@ const Emergency = () => {
             <AddContact
                 isOpen={isOpen}
                 handleAdd={handleAdd}
+                handleSelectContact={handleSelectContact}
                 handleDialogOpen={handleDialogOpen}
                 handleDialogClose={handleDialogClose}
+                selectedContact={selectedContact}
+                setSelectedContact={setSelectedContact}
+                isPending={isPending}
             />
             {/* <Dialog
                 open={isOpen}

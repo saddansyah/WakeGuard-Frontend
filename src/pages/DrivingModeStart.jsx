@@ -3,7 +3,6 @@ import Webcam from "react-webcam";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion"
 
-import LinearProgress from '@mui/material/LinearProgress';
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import SpeedIcon from '@mui/icons-material/Speed';
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -21,10 +20,11 @@ const DrivingModeStart = () => {
     const navigate = useNavigate();
     const webcamRef = useRef(null);
     const [result, setResult] = useState('Awake');
+    const [initializing, setInitializing] = useState(false);
     const { runModel } = useModel({ webcamRef, setResult });
 
     useEffect(() => {
-        runModel();
+        runModel(setInitializing);
     }, [])
 
 
@@ -36,7 +36,6 @@ const DrivingModeStart = () => {
                         <ArrowBackIcon className="text-white" />
                     </button>
                 </Navbar>
-
                 <div className="wrapper-focus-mode h-[65vh] flex flex-col mt-[30%] justify-start items-center">
                     <div className={`alert card py-1 px-4 rounded-full mb-24 text-primary ${result === 'Drowsy' && 'bg-red-400 text-white border-red-500'}`}>
                         <span className="mr-1">{result === 'Awake' && 'You are still awake'}{result === 'Drowsy' && 'You look so sleepy'}</span> <VisibilityIcon />

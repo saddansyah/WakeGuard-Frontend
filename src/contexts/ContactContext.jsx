@@ -10,15 +10,15 @@ export const contactReducer = (state, action) => {
             }
         case 'added_contact':
             return {
-                contacts: [action.payload, ...state.contact]
+                contacts: [...action.payload, ...state.contacts]
             }
         case 'changed_contact':
             return {
-                contacts: state.contact.map((item) => {return item._id !== action.payload._id ? item : action.payload}).sort((a, b) => {return Number(b.isPinned) - Number(a.isPinned)})
+                contacts: state.contacts.map((item) => {return item._id !== action.payload._id ? item : action.payload}).sort((a, b) => {return Number(b.isPinned) - Number(a.isPinned)})
             }
         case 'deleted_contact':
             return {
-                contacts: state.contact.filter((item) => { return item._id !== action.payload._id })
+                contacts: state.contacts.filter((item) => { return item._id !== action.payload._id })
             }
         default:
             return state

@@ -25,7 +25,7 @@ const Speedometer = () => {
     }, []);
 
     return (<>
-        {location.speed}
+        {Math.floor(location.speed)}
     </>);
 }
 
