@@ -6,9 +6,11 @@ import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import { Avatar, Fade, ButtonBase } from "@mui/material";
 
 import { Navbar } from "@/utils/componentsLoader";
+import { useAuthContext } from '@/hooks/context/useAuthContext';
 
 const DrivingMode = () => {
     const navigate = useNavigate();
+    const { user, dispatch } = useAuthContext();
 
     const handleStart = () => {
         navigate('/driving-mode/start', { replace: true });
@@ -18,7 +20,7 @@ const DrivingMode = () => {
         <>
             <motion.div exit={{ opacity: 0 }}>
                 <Navbar>
-                    <Avatar>SA</Avatar>
+                    <img src={user && user?.photoURL} style={{ width: '3em', height: '3em', borderRadius: 1000 }} alt="user profile" />
                     <Menu />
                 </Navbar>
                 <div className="wrapper h-[65vh] flex flex-col justify-center items-center">

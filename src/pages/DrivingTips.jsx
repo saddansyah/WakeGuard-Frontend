@@ -6,14 +6,17 @@ import { Navbar, SearchBar, ArticleLoading, ArticleCard, NoArticleCard, SelectCa
 import useFetch from "@/hooks/useFetch";
 import { useArticleContext } from "@/hooks/context/useArticleContext";
 import { useDisplayContext } from "@/hooks/context/useDisplayContext";
+import { useAuthContext } from "@/hooks/context/useAuthContext";
 
 const DrivingTips = () => {
 
   const baseUrl = import.meta.env.VITE_APP_DUMMY_URL;
   const { articles, dispatch } = useArticleContext();
+  const { user } = useAuthContext();
+  const { isPending, message, setLoading, setMessage } = useDisplayContext();
+
   const [selectedCategories, setSelectedCategories] = useState([]);
   const categories = articles?.map(article => article.category)
-  const { isPending, message, setLoading, setMessage } = useDisplayContext();
 
   useFetch({ url: baseUrl + '/articles', dispatch, type: 'get_articles', setLoading, setMessage });
 
@@ -30,11 +33,10 @@ const DrivingTips = () => {
     filtered[0] ? setFilteredArticles(filtered) : setFilteredArticles([]);
   }
 
-  console.log(categories)
   return (
     <>
       <Navbar>
-        <Avatar>WG</Avatar>
+        <img src={user && user?.photoURL} style={{ width:'3em', height:'3em', borderRadius: 1000 }} alt="user profile" />
         <SearchBar
           placeholder={'Search articles..'}
           searchText={searchText}

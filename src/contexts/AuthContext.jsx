@@ -1,4 +1,5 @@
 import { createContext, useReducer, useEffect } from "react";
+import { auth, signInWithGoogle, firebase, signOut } from "@/services/firebase";
 
 export const AuthContext = createContext();
 
@@ -23,12 +24,24 @@ const AuthContextProvider = ({ children }) => {
     });
 
     useEffect(() => {
-        const user = JSON.parse(sessionStorage.getItem('user'));
-        if (user) dispatch({ type: 'LOGIN', payload: user });
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                sessionStorage.setItem("user", JSON.stringify(user));
+                dispatch({ type: 'LOGIN', payload: user });
+            }
+        });
     }, []);
 
+    const login = () => {
+        return signInWithGoogle();
+    };
+
+    const logout = () => {
+        return signOut();
+    };
+
     return (
-        <AuthContext.Provider value={{ ...state, dispatch }}>
+        <AuthContext.Provider value={{ ...state, dispatch, login, logout }}>
             {children}
         </AuthContext.Provider>
     )

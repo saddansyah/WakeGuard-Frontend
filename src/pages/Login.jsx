@@ -19,17 +19,27 @@ const defaultTheme = createTheme({
 
 export default function Login() {
 
-    const { user, dispatch } = useAuthContext();
+    const { user, dispatch, login } = useAuthContext();
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
-        sessionStorage.setItem('user', JSON.stringify({
-            token: 123,
-            name: "saddan"
-        }))
+        try {
+            await login();
 
-        window.location.replace('')
+            if (user) {
+                window.location.replace('')
+            }
+        }
+        catch (error) {
+            alert(error)
+        }
+
+        // sessionStorage.setItem('user', JSON.stringify({
+        //     token: 123,
+        //     name: "saddan"
+        // }))
+
 
     };
 

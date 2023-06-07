@@ -4,6 +4,8 @@ const usePinContact = ({ url, dispatch, type, setLoading, setMessage }) => {
     const pin = async (id, payload) => {
         setLoading(true);
         try {
+            const { stsTokenManager: { accessToken }, uid } = JSON.parse(sessionStorage.getItem("user"));
+            
             const json = await axios.patch(`${url}/${id}`,
                 {
                     isPinned: payload
@@ -11,6 +13,7 @@ const usePinContact = ({ url, dispatch, type, setLoading, setMessage }) => {
                 {
                     headers:
                     {
+                        'Authorization': `Bearer ${accessToken}`,
                         'Content-type': 'application/json',
                         'ngrok-browser-skip-warning': 69420
                     }

@@ -40,8 +40,6 @@ const ArticleContextProvider = ({ children }) => {
         article: ''
     });
 
-    console.log(state)
-
     return (
         <ArticleContext.Provider value={{ ...state, dispatch }}>
             {children}

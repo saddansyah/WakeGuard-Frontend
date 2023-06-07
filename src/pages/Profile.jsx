@@ -5,42 +5,29 @@ import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 
 import { Avatar, ButtonBase, InputAdornment, TextField } from "@mui/material";
+
 import { Navbar } from "@/utils/componentsLoader";
+import { useAuthContext } from '@/hooks/context/useAuthContext';
+
 
 const Profile = () => {
+    const { user, dispatch, logout } = useAuthContext();
 
-    const dummyUser = {
-        username: 'wakeguard',
-        name: 'Wakeguard User',
-        email: 'gmail@wakeguard.com',
-        phoneNumber: '081293812939'
-    }
-
-    const handleLogout = () => {
+    const handleLogout = async () => {
+        // await logout()
         sessionStorage.removeItem('user');
-
+        dispatch({ type: 'LOGOUT' });
         window.location.replace('login')
     }
     return (
         <>
             <Navbar>
-                <Avatar>SA</Avatar>
+                <img src={user && user?.photoURL} style={{ width: '3em', height: '3em', borderRadius: 1000 }} alt="user profile" />
                 <Menu />
             </Navbar>
             <h1 className="font-bold text-2xl text-primary mb-6">My Profile</h1>
-            <div className="profile-summary flex flex-row gap-8 items-start h-fit">
-                <Avatar src="https://assets.pikiran-rakyat.com/crop/0x0:0x0/x/photo/2021/05/18/1067981407.jpg" sx={{ width: 120, height: 120, fontSize: 50 }}>SA</Avatar>
-                <div className="content-right">
-                    <div className="username card p-3">
-                        <h2 className="text-xl font-semibold">@{dummyUser.username}</h2>
-                    </div>
-                    <div className="edit-button mt-3"></div>
-                    <ButtonBase component="div">
-                        <div className="p-2 rounded-lg bg-accent text-white">
-                            <span><ModeEditIcon /></span> Edit Profile
-                        </div>
-                    </ButtonBase>
-                </div>
+            <div className="profile-summary items-center justify-center flex flex-row gap-8 h-fit">
+                <Avatar src={user && user?.photoURL} sx={{ width: 120, height: 120, fontSize: 50 }}>{user && user?.displayName[0]}</Avatar>
             </div>
             <div className="profile-info mt-12">
                 <h2 className="font-bold mb-2">Profile Information</h2>
@@ -51,7 +38,7 @@ const Profile = () => {
                             disabled
                             id="name"
                             label="Name"
-                            value={dummyUser.name}
+                            value={user?.displayName}
                             variant="outlined"
                             InputProps={{
                                 startAdornment: (
@@ -68,29 +55,12 @@ const Profile = () => {
                             disabled
                             id="email"
                             label="Email"
-                            value={dummyUser.email}
+                            value={user?.email}
                             variant="outlined"
                             InputProps={{
                                 startAdornment: (
                                     <InputAdornment position="start">
                                         <EmailIcon />
-                                    </InputAdornment>
-                                )
-                            }}
-                        />
-                    </div>
-                    <div className="">
-                        <TextField
-                            fullWidth
-                            disabled
-                            id="phoneNumber"
-                            label="Phone Number"
-                            value={dummyUser.phoneNumber}
-                            variant="outlined"
-                            InputProps={{
-                                startAdornment: (
-                                    <InputAdornment position="start">
-                                        <PhoneIcon />
                                     </InputAdornment>
                                 )
                             }}

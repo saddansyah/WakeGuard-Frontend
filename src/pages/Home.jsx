@@ -16,10 +16,11 @@ import useFetch from "@/hooks/useFetch";
 import { useContactContext } from "@/hooks/context/useContactContext";
 import { useDisplayContext } from "@/hooks/context/useDisplayContext";
 import { useArticleContext } from "@/hooks/context/useArticleContext";
+import { useAuthContext } from '@/hooks/context/useAuthContext';
 
 
 const Home = () => {
-    const user = "WakeGuard";
+    const { user } = useAuthContext();
     const baseUrl = import.meta.env.VITE_APP_DUMMY_URL
 
     const { contacts, dispatch: dispatchContact } = useContactContext();
@@ -32,11 +33,11 @@ const Home = () => {
     return (
         <>
             <Navbar>
-                <Avatar>WG</Avatar>
+                <img src={user && user?.photoURL} style={{ width: '3em', height: '3em', borderRadius: 1000 }} alt="user profile" />
                 <Menu />
             </Navbar>
             <div className="head-title mb-12 text-accent">
-                <h1 className="font-bold text-2xl ">Hello, {user}</h1>
+                <h1 className="font-bold text-2xl ">Hello, {user?.displayName}</h1>
                 <p className="font-light text-gray-500">as User</p>
             </div>
 

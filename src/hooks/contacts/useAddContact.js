@@ -4,27 +4,23 @@ const useAddContact = ({ url, payload, dispatch, type, setLoading, setMessage })
     const add = async () => {
         setLoading(true);
         try {
+            const { stsTokenManager: { accessToken }, uid } = JSON.parse(sessionStorage.getItem("user"));
+
             const contacts = payload?.map(item => {
                 return {
                     name: item.name[0],
                     number: item.tel[0],
                     isPinned: false,
-                    user_id: 1
+                    user_id: uid
                 }
             })
-
-            // const dummyContact = {
-            //     name: 'Admin',
-            //     number: '081393789949',
-            //     isPinned: false,
-            //     user_id: 1
-            // }
 
             const json = await axios.post(url,
                 contacts,
                 {
                     headers:
                     {
+                        'Authorization': `Bearer ${accessToken}`,
                         'Content-type': 'application/json',
                         'ngrok-browser-skip-warning': 69420
                     }
