@@ -6,7 +6,7 @@ const useDeleteContact = ({ url, dispatch, type, setLoading, setMessage }) => {
         try {
             const { stsTokenManager: { accessToken }, uid } = JSON.parse(sessionStorage.getItem("user"));
 
-            const json = await axios.delete(`${url}/${uid}`,
+            const json = await axios.delete(`${url}/${id}`,
                 {
                     headers:
                     {

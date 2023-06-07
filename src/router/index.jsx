@@ -25,11 +25,10 @@ import DynamicTitle from "@/utils/dynamicTitle";
 import { useAuthContext } from "@/hooks/context/useAuthContext";
 
 const isLoggedIn = () => {
-
+  
   const user = sessionStorage.getItem('user');
-
   // Auth logic...
-  return user
+  return user;
 }
 
 const router = createBrowserRouter(createRoutesFromElements(
