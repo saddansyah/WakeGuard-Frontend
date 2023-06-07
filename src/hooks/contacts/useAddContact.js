@@ -6,15 +6,13 @@ const useAddContact = ({ url, data, dispatch, type, setLoading, setMessage }) =>
         try {
             const json = await axios.post(url,
                 {
-                    name: "wg4",
-                    number: "081393789949",
-                    isPinned: true,
-                    user_id: 1
+                    ...data
                 },
                 {
                     headers:
                     {
-                        'Content-type': 'application/json'
+                        'Content-type': 'application/json',
+                        'ngrok-browser-skip-warning': 69420
                     }
                 });
 
@@ -28,6 +26,7 @@ const useAddContact = ({ url, data, dispatch, type, setLoading, setMessage }) =>
         }
         catch (error) {
             alert(error.stack);
+            console.error(error);
             setMessage({ error: true, severity: 'error', message: error || `Something bad is happened` });
             setLoading(false);
         }
@@ -37,7 +36,10 @@ const useAddContact = ({ url, data, dispatch, type, setLoading, setMessage }) =>
         e.stopPropagation();
         e.preventDefault();
 
-        await add();
+        if (!!data.length) {
+            await add();
+        }
+
     }
 
     return { add, handleAdd };

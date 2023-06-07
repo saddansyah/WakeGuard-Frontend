@@ -6,23 +6,28 @@ export const articleReducer = (state, action) => {
     switch (action.type) {
         case 'get_articles':
             return {
-                articles: action.payload.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // Sort by datetime
+                articles: action.payload.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)), // Sort by datetime
+                article: state.article
             }
         case 'get_article':
             return {
-                articles: action.payload
+                articles: [...state.articles],
+                article: action.payload
             }
         case 'added_article':
             return {
-                articles: [action.payload, ...state.article]
+                articles: [action.payload, ...state.articles],
+                article: state.article
             }
         case 'changed_article':
             return {
-                articles: state.article.map((item) => {return item.id !== action.payload.id ? item : action.payload}).sort((a, b) => {return Number(b.isPinned) - Number(a.isPinned)})
+                articles: state.articles.map((item) => { return item.id !== action.payload.id ? item : action.payload }).sort((a, b) => { return Number(b.isPinned) - Number(a.isPinned) }),
+                article: state.article
             }
         case 'deleted_article':
             return {
-                articles: state.article.filter((item) => { return item.id !== action.payload.id })
+                articles: state.articles.filter((item) => { return item.id !== action.payload.id }),
+                article: state.article
             }
         default:
             return state
@@ -31,11 +36,14 @@ export const articleReducer = (state, action) => {
 
 const ArticleContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(articleReducer, {
-        articles: []
+        articles: [],
+        article: ''
     });
 
+    console.log(state)
+
     return (
-        <ArticleContext.Provider value={{ ...state, dispatch}}>
+        <ArticleContext.Provider value={{ ...state, dispatch }}>
             {children}
         </ArticleContext.Provider>
     );
