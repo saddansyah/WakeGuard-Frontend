@@ -4,10 +4,13 @@ const useDeleteContact = ({ url, dispatch, type, setLoading, setMessage }) => {
     const remove = async (id) => {
         setLoading(true);
         try {
-            const json = await axios.delete(`${url}/${id}`,
+            const { stsTokenManager: { accessToken }, uid } = JSON.parse(sessionStorage.getItem("user"));
+
+            const json = await axios.delete(`${url}/${uid}`,
                 {
                     headers:
                     {
+                        'Authorization': `Bearer ${accessToken}`,
                         'Content-type': 'application/json',
                         'ngrok-browser-skip-warning': 69420
                     }

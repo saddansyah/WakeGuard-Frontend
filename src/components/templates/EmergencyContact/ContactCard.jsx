@@ -39,9 +39,7 @@ const ContactCard = ({ contact, handleDelete, isPending, handlePin }) => {
                     </div>
                 </div>
             }
-            {/* {isPending && <LinearProgress color='inherit' className='mt-2' />} */}
         </div>
-
     );
 }
 

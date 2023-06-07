@@ -11,9 +11,10 @@ import { useAuthContext } from '@/hooks/context/useAuthContext';
 
 
 const Profile = () => {
-    const { user, dispatch } = useAuthContext();
+    const { user, dispatch, logout } = useAuthContext();
 
-    const handleLogout = () => {
+    const handleLogout = async () => {
+        // await logout()
         sessionStorage.removeItem('user');
         dispatch({ type: 'LOGOUT' });
         window.location.replace('login')
@@ -37,7 +38,7 @@ const Profile = () => {
                             disabled
                             id="name"
                             label="Name"
-                            value={user && user?.displayName}
+                            value={user?.displayName}
                             variant="outlined"
                             InputProps={{
                                 startAdornment: (
@@ -54,7 +55,7 @@ const Profile = () => {
                             disabled
                             id="email"
                             label="Email"
-                            value={user && user?.email}
+                            value={user?.email}
                             variant="outlined"
                             InputProps={{
                                 startAdornment: (
