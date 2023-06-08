@@ -14,9 +14,9 @@ const Profile = () => {
     const { user, dispatch, logout } = useAuthContext();
 
     const handleLogout = async () => {
-        // await logout()
         sessionStorage.removeItem('user');
         dispatch({ type: 'LOGOUT' });
+        await logout()
         window.location.replace('login')
     }
     return (

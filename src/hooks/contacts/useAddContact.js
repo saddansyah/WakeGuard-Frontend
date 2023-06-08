@@ -10,8 +10,7 @@ const useAddContact = ({ url, payload, dispatch, type, setLoading, setMessage })
                 return {
                     name: item.name[0],
                     number: item.tel[0],
-                    isPinned: false,
-                    user_id: uid
+                    isPinned: false
                 }
             })
 
