@@ -1,51 +1,58 @@
 import {
-    createBrowserRouter,
-    createRoutesFromElements,
-    Route,
-    Navigate
-  } from "react-router-dom";
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  Navigate
+} from "react-router-dom";
 
 // User-defined
 import {
-    App,
-    NotFound,
-    BaseLayout,
-    Login,
-    Register,
-    Home,
-    DrivingMode,
-    DrivingTips,
-    Emergency,
-    Profile
-  } from '@/utils/pagesLoader';
+  App,
+  NotFound,
+  BaseLayout,
+  Login,
+  Register,
+  Home,
+  DrivingMode,
+  DrivingModeStart,
+  DrivingTips,
+  Emergency,
+  Profile,
+  ArticleDetails
+} from '@/utils/pagesLoader';
 
-  const isLoggedIn = () => {
+import DynamicTitle from "@/utils/dynamicTitle";
+import { useAuthContext } from "@/hooks/context/useAuthContext";
 
-    // Auth logic...
-    
-    return true;
-  }
+const isLoggedIn = () => {
   
-  const router = createBrowserRouter(createRoutesFromElements(
-    <Route path='/' element={<BaseLayout/>}>
-      <Route exact path='/' element={isLoggedIn() ? <App/> : <Navigate to='auth/login' replace />}>
-        <Route path='/' element={<Home/>} />
-        <Route path='/driving-mode' element={<DrivingMode/>} />
-        <Route path='/emergency' element={<Emergency/>} />
-        <Route path='/driving-tips' element={<DrivingTips/>} />
-        <Route path='/profile' element={<Profile/>} />
-        <Route path='*' element={<NotFound/>} />
-      </Route>
-      <Route exact path='auth' element={isLoggedIn() ? <Navigate to='/' replace/> : <Login/>}>
-        <Route path='login' element={<Login/>} />
-        <Route path='register' element={<Register/>} />
-      </Route>
-    </Route >
-  ))
+  const user = sessionStorage.getItem('user');
+  // Auth logic...
+  return user;
+}
 
-  export {
-    isLoggedIn,
-    router
-  }
+const router = createBrowserRouter(createRoutesFromElements(
+  <Route path='/' element={<BaseLayout />}>
+    <Route exact path='/' element={isLoggedIn() ? <App /> : <Navigate to='auth/login' replace />}>
+      <Route path='/' element={<DynamicTitle title="Home"><Home /></DynamicTitle>} />
+      <Route path='/driving-mode' element={<DynamicTitle title="Driving Mode"><DrivingMode /></DynamicTitle>} />
+      <Route path='/driving-mode/start' element={<DynamicTitle title="Driving Mode - Starting"><DrivingModeStart /></DynamicTitle>} />
+      <Route path='/emergency' element={<DynamicTitle title="Emergency"><Emergency /></DynamicTitle>} />
+      <Route path='/driving-tips' element={<DynamicTitle title="Driving Tips"><DrivingTips /></DynamicTitle>} />
+      <Route path='/driving-tips/:postId' element={<DynamicTitle title="Driving Tips"><ArticleDetails /></DynamicTitle>} />
+      <Route path='/profile' element={<DynamicTitle title="Profile"><Profile /></DynamicTitle>} />
+      <Route path='*' element={<DynamicTitle title="404 Not Found"><NotFound /></DynamicTitle>} />
+    </Route>
+    <Route exact path='auth' element={isLoggedIn() ? <Navigate to='/' replace /> : <Login />}>
+      <Route path='login' element={<Login />} />
+      <Route path='register' element={<Register />} />
+    </Route>
+  </Route >
+))
+
+export {
+  isLoggedIn,
+  router
+}
 
 

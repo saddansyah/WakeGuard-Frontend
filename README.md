@@ -2,9 +2,8 @@
   🚗 WakeGuard
 </h1>
 
-## ❓ Tentang 
+## ❓ About 
 WakeGuard adalah aplikasi untuk deteksi kantuk pada pengemudi dengan tujuan meminimalkan risiko kecelakaan karena microsleep
-
 
 ## 🔙 Backend Repository
 [Backend Repository](https://github.com/saddansyah/WakeGuard-Backend)
@@ -19,6 +18,22 @@ WakeGuard adalah aplikasi untuk deteksi kantuk pada pengemudi dengan tujuan memi
 ### Example
 `feat: add post controller`
 `chore: update readme`
+
+## 🛠 Setup
+### Setting Up Project
+- Clone this repository <br/>
+  ``` git clone https://github.com/saddansyah/WakeGuard-Frontend.git ```
+- Install required dependencies <br/>
+  ``` npm install ```
+- Run the program <br/>
+  ``` npm run dev ```
+
+### Using Dummy Backend with JSON Server
+``` npx json-server --watch dummydb.json ```
+
+### Build Program
+``` npm run build ```
+
 
 ## 👨‍💻 Kelompok Pancasila
 - Christina Angraeni Panellah - 20/456840/TK/50664 **(Ketua Kelompok)**

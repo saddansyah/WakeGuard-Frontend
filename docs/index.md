@@ -119,6 +119,8 @@ Kebutuhan pengguna :
 
 ### Entity Relationship Diagram
 ![image](https://user-images.githubusercontent.com/73093118/223000084-6dd56960-094c-4a31-836a-18e44bcf9a01.png)
+![erd_wakeguard drawio](https://user-images.githubusercontent.com/73093118/235354877-0086dced-e18f-4120-ba6d-ed73ac24630c.png)
+
 
 ## Functional Requirements
 | FR  | Diagram |

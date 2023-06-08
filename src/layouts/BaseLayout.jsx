@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 const BaseLayout = () => {
     return (
         <>
-            <div className="bg-zinc-800 p-6 h-[100vh]">
+            <div className="bg-white relative max-w-lg w-screen text-black mx-auto">
                 <Outlet />
             </div>
         </>
