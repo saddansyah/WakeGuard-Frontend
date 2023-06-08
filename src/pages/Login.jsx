@@ -27,8 +27,8 @@ export default function Login() {
         try {
             await login();
 
-            if (user) {
-                window.location.replace('')
+            if (sessionStorage.getItem("user")) {
+                window.location.replace('/')
             }
         }
         catch (error) {
