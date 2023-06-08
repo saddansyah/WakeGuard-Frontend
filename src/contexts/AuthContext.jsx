@@ -28,7 +28,6 @@ const AuthContextProvider = ({ children }) => {
             if (user) {
                 sessionStorage.setItem("user", JSON.stringify(user));
                 dispatch({ type: 'LOGIN', payload: user });
-                window.location.replace('');
             }
             else{
                 sessionStorage.removeItem("user");

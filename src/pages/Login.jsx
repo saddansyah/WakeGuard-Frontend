@@ -27,9 +27,9 @@ export default function Login() {
         try {
             await login();
 
-            // if (user) {
-            //     window.location.replace('')
-            // }
+            if (user) {
+                window.location.replace('')
+            }
         }
         catch (error) {
             alert(error)
