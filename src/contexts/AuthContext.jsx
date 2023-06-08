@@ -29,10 +29,6 @@ const AuthContextProvider = ({ children }) => {
                 sessionStorage.setItem("user", JSON.stringify(user));
                 dispatch({ type: 'LOGIN', payload: user });
             }
-            else{
-                sessionStorage.removeItem("user");
-                dispatch({ type: 'LOGOUT', payload: null });
-            }
         });
     }, []);
 
