@@ -38,10 +38,10 @@ const useModel = ({ webcamRef, setResult }) => {
             const expanded = casted.expandDims(0)
             const obj = await net.executeAsync(expanded)
 
-            const classes = await obj[0].array();
+            const classes = await obj[4].array();
 
             // Set result
-            setResult(classes[0].reduce((acc, curr) => { return acc + curr }, 0) > 4 ? 'Drowsy' : 'Awake');
+            setResult(classes[0].reduce((acc, curr) => { return acc + curr }, 0) > 160 ? 'Drowsy' : 'Awake');
 
             // console.log(classes[0].reduce((acc, curr) => { return acc + curr }, 0))
             // Dispose variables to improve perfomance
