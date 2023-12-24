@@ -27,7 +27,6 @@ const useAddContact = ({ url, payload, dispatch, type, setLoading, setMessage })
                 });
 
             const { data, status } = await json.data;
-            console.log(data)
 
             dispatch({ type, payload: data });
             setLoading(false);

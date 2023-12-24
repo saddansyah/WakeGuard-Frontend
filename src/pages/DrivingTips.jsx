@@ -48,8 +48,8 @@ const DrivingTips = () => {
       <SelectCategories categories={selectedCategories} setCategories={setSelectedCategories} />
       <div className="wrapper mb-20">
         <div className="cards grid gap-2">
-          {!filteredArticles.length && (isPending ? <ArticleLoading /> : <NoArticleCard />)}
-          {filteredArticles[0] && filteredArticles?.map((article, id) => <ArticleCard key={article._id} article={article} />)}
+          {!filteredArticles?.length && (isPending ? <ArticleLoading /> : <NoArticleCard />)}
+          {filteredArticles?.map((article, id) => <ArticleCard key={article._id} article={article} />)}
         </div>
       </div>
     </>

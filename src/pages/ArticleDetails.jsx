@@ -16,7 +16,6 @@ const ArticleDetails = () => {
     const navigate = useNavigate();
     const { article, dispatch } = useArticleContext();
     const { isPending, message, setLoading, setMessage } = useDisplayContext();
-    console.log(article);
     const params = useParams();
     const baseUrl = import.meta.env.VITE_APP_DUMMY_URL
 

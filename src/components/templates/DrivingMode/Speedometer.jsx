@@ -5,7 +5,6 @@ const Speedometer = () => {
     const [speed, setSpeed] = useState();
 
     const setPosition = (position) => {
-        console.log(position)
         setLocation((item) => { return { latitude: position.coords.latitude, longitude: position.coords.longitude, speed: (position.coords.speed)*3.6 || 0 } })
     }
 
