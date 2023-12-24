@@ -13,13 +13,6 @@ import { SkeletonLoading } from '@/utils/componentsLoader';
 
 import './index.css'
 
-// Service Workers
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/serviceWorker.js') // async
-    .then((reg) => console.log('serviceWorker is registered'))
-    .catch((err) => console.error(err))
-}
-
 // Context Provider
 import ArticleContextProvider from '@/contexts/ArticleContext';
 import ContactContextProvider from '@/contexts/ContactContext';
