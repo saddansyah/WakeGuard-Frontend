@@ -1,4 +1,4 @@
-import { createContext, useReducer, useEffect } from "react";
+import { createContext, useReducer, useEffect, useState } from "react";
 import { auth, signInWithGoogle, firebase, signOut } from "@/services/firebase";
 
 export const AuthContext = createContext();
@@ -23,13 +23,14 @@ const AuthContextProvider = ({ children }) => {
         user: null
     });
 
+
     useEffect(() => {
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
                 sessionStorage.setItem("user", JSON.stringify(user));
                 dispatch({ type: 'LOGIN', payload: user });
             }
-            else{
+            else {
                 sessionStorage.removeItem("user");
                 dispatch({ type: 'LOGOUT', payload: null });
             }

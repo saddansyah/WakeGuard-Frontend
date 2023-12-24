@@ -61,14 +61,14 @@ const Home = () => {
             <div className="one-tap-call mb-6">
                 <h2 className="font-bold mb-2">One-tap Call</h2>
                 <div className="cards grid grid-cols-1 gap-2">
-                    {!contacts.length && (isPending ? <ContactLoading /> : <NoContactCard />)}
+                    {!contacts?.length && (isPending ? <ContactLoading /> : <NoContactCard />)}
                     {contacts[0] && contacts?.map((contact, id) => contact.isPinned && <ContactCard key={contact._id} contact={contact} />)}
                 </div>
             </div>
 
             <div className="recent-tips mb-20">
                 <h2 className="font-bold mb-2">Recent Driving Tips</h2>
-                {!articles.length && (isPending ? <ArticleLoading /> : <NoArticleCard />)}
+                {!articles?.length && (isPending ? <ArticleLoading /> : <NoArticleCard />)}
                 {articles[0] && articles?.map((article, id) => <ArticleCard key={article._id} article={article} />)[0]}
             </div>
         </>

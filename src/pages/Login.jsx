@@ -7,6 +7,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { useAuthContext } from '@/hooks/context/useAuthContext';
+import { useEffect } from 'react';
 
 
 // TODO remove, this demo shouldn't need to reset the theme.
@@ -26,22 +27,18 @@ export default function Login() {
 
         try {
             await login();
-
-            if (user) {
-                window.location.replace('')
-            }
         }
         catch (error) {
             alert(error)
         }
 
-        // sessionStorage.setItem('user', JSON.stringify({
-        //     token: 123,
-        //     name: "saddan"
-        // }))
-
-
     };
+
+    useEffect(() => {
+        if (user) {
+            window.location.reload();
+        }
+    }, [user]);
 
     return (
         <ThemeProvider theme={defaultTheme}>
