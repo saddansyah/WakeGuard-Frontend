@@ -7,7 +7,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { useAuthContext } from '@/hooks/context/useAuthContext';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 
 // TODO remove, this demo shouldn't need to reset the theme.
@@ -21,10 +21,11 @@ const defaultTheme = createTheme({
 export default function Login() {
 
     const { user, dispatch, login } = useAuthContext();
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
+        setIsLoading(true);
         try {
             await login();
         }
@@ -36,6 +37,7 @@ export default function Login() {
 
     useEffect(() => {
         if (user) {
+            setIsLoading(false);
             window.location.reload();
         }
     }, [user]);
@@ -53,6 +55,7 @@ export default function Login() {
                         <h1 className='text-4xl font-bold text-primary'>Wakeguard</h1>
                         <Button
                             type="submit"
+                            disabled={isLoading}
                             onClick={handleSubmit}
                             color='primary'
                             fullWidth
